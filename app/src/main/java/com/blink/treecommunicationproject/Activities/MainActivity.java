@@ -1,7 +1,9 @@
-package com.blink.treecommunicationproject;
+package com.blink.treecommunicationproject.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.blink.treecommunicationproject.R;
 
 public class MainActivity extends AppCompatActivity {
 
