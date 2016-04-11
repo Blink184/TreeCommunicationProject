@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         return etUsername.getText().toString().length() > 0 && etPassword.getText().toString().length() > 0;
     }
    private void goToMainPage() {
-       startActivity(new Intent(getApplicationContext(), MainActivity.class).putExtra("UserStatus",1));
+       startActivity(new Intent(getApplicationContext(), MainActivity.class));
        finish();
     }
 }
