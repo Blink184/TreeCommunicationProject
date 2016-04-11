@@ -2,14 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/bg_login"
+    android:background="#000000"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp"
     android:id="@+id/llLogin">
 <RelativeLayout
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kinda_Gray">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -26,8 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
-            android:hint="@string/hint_phone"
-            android:inputType="phone"
+            android:hint="@string/hint_username"
+            android:inputType="text"
             android:padding="10dp"
             android:singleLine="true"
             android:textColor="@color/input_login"
@@ -53,9 +54,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
-            android:background="@color/btn_login_bg"
             android:text="@string/btn_login"
-            android:textColor="@color/btn_login" />
+            android:textColor="@color/kinda_White"
+            android:background="@drawable/round_btn" />
 
         <!-- Link to LoginActivity Screen -->
 

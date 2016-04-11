@@ -1,9 +1,12 @@
 package com.blink.treecommunicationproject.Activities;
 
 
+import android.app.Application;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +19,7 @@ import com.blink.treecommunicationproject.Web.DatabaseMethods;
  */
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = "LoginActivity";
     private Button btnToRegister;
     private Button btnLogin;
     private EditText etUsername, etPassword;
@@ -73,10 +77,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isFormValid() {
-        return etUsername.getText().toString().length() > 0 && etPassword.getText().toString().length() > 0;
+        try {
+            return etUsername.getText().toString().length() > 0 && etPassword.getText().toString().length() > 0;
+        } catch (Exception ex) {
+            Log.e(TAG, ex.getMessage());
+        }
+        return false;
     }
+
    private void goToMainPage() {
-       startActivity(new Intent(getApplicationContext(), MainActivity.class).putExtra("UserStatus",1));
-       finish();
+       try {
+           startActivity(new Intent(getApplicationContext(), MainActivity.class));
+           finish();
+       } catch (Exception ex) {
+           Log.e(TAG, ex.getMessage());
+       }
+
     }
 }
