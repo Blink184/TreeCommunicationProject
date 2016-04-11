@@ -42,4 +42,5 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="btn_send">Send</string>
+    <string name="title_activity_main">Main</string>
 </resources>
