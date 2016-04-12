@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.blink.treecommunicationproject.Libs.Global;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Web.DatabaseMethods;
 
@@ -20,7 +21,6 @@ import com.blink.treecommunicationproject.Web.DatabaseMethods;
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
-    private Button btnToRegister;
     private Button btnLogin;
     private EditText etUsername, etPassword;
   //  private Preferences preferences;
@@ -29,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //btnToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login() {
-        DatabaseMethods.getEmployee(etUsername.getText().toString(), etPassword.getText().toString());
+        Global.user = DatabaseMethods.getEmployee(etUsername.getText().toString(), etPassword.getText().toString());
         goToMainPage();
 //        HashMap<String, String> params = new HashMap<>();
 //        params.put("phone", etPhone.getText().toString());
