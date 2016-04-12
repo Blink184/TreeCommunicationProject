@@ -26,7 +26,7 @@
         </FrameLayout>
     </RelativeLayout>
     <!-- android:layout_marginTop="?android:attr/actionBarSize"-->
-    <com.blink.treecommunicationproject.Libs.Drawer.ScrimInsetsFrameLayout
+    <com.blink.treecommunicationproject.Services.Drawer.ScrimInsetsFrameLayout
         android:id="@+id/scrimInsetsFrameLayout"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="wrap_content"
@@ -39,11 +39,11 @@
 
         <fragment
             android:id="@+id/fragment_drawer"
-            android:name="com.blink.treecommunicationproject.Libs.Drawer.NavigationDrawerFragment"
+            android:name="com.blink.treecommunicationproject.Services.Drawer.NavigationDrawerFragment"
             android:layout_width="@dimen/navigation_drawer_width"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:layout="@layout/fragment_navigation_google"
             tools:layout="@layout/fragment_navigation_google" />
-    </com.blink.treecommunicationproject.Libs.Drawer.ScrimInsetsFrameLayout>
+    </com.blink.treecommunicationproject.Services.Drawer.ScrimInsetsFrameLayout>
 </android.support.v4.widget.DrawerLayout>

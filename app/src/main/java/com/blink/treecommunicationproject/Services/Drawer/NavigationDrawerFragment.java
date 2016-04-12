@@ -1,4 +1,4 @@
-package com.blink.treecommunicationproject.Libs.Drawer;
+package com.blink.treecommunicationproject.Services.Drawer;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -23,8 +23,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.blink.treecommunicationproject.Libs.Global;
 import com.blink.treecommunicationproject.R;
+import com.blink.treecommunicationproject.Services.Global;
 
 import java.util.ArrayList;
 import java.util.List;
