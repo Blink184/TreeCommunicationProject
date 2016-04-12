@@ -63,7 +63,12 @@ public class Employee {
         President, Director, Advisor, Responsible, Member, Person
     }
 
-//Getters and setters
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+
+    //Getters and setters
     public int getId() {
         return id;
     }
