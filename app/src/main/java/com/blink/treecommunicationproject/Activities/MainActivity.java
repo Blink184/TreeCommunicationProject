@@ -13,9 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.blink.treecommunicationproject.Activities.Fragments.HomeFragment;
-import com.blink.treecommunicationproject.Libs.Drawer.NavigationDrawerCallbacks;
-import com.blink.treecommunicationproject.Libs.Drawer.NavigationDrawerFragment;
-import com.blink.treecommunicationproject.Libs.ProgressBar;
+import com.blink.treecommunicationproject.Services.Drawer.NavigationDrawerCallbacks;
+import com.blink.treecommunicationproject.Services.Drawer.NavigationDrawerFragment;
+import com.blink.treecommunicationproject.Services.ProgressBar;
 import com.blink.treecommunicationproject.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationDrawerCallbacks {

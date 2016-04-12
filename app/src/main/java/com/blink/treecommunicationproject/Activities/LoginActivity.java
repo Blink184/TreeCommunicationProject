@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.blink.treecommunicationproject.Libs.Global;
+import com.blink.treecommunicationproject.Services.Global;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Web.Database.DatabaseMethods;
 
