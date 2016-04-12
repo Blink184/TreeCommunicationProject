@@ -1,5 +1,7 @@
 package com.blink.treecommunicationproject.Objects;
 
+import android.graphics.Bitmap;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +17,7 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    private Bitmap picture;
     private EmployeeType employeeType;
     private Employee parentEmployee;
     private List<Employee> childrenEmployees;
@@ -30,11 +33,12 @@ public class Employee {
     }
 
 
-    public Employee(int id, String username, String password, String firstName, String lastName, String phoneNumber, EmployeeType employeeType, Employee parentEmployee, List<Employee> childrenEmployees) {
+    public Employee(int id, String username, String password, String firstName, String lastName, String phoneNumber, Bitmap picture, EmployeeType employeeType, Employee parentEmployee, List<Employee> childrenEmployees) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.picture = picture;
         this.employeeType = employeeType;
         this.parentEmployee = parentEmployee;
         this.childrenEmployees = childrenEmployees;
@@ -140,4 +144,13 @@ public class Employee {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Bitmap getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Bitmap picture) {
+        this.picture = picture;
+    }
+
 }
