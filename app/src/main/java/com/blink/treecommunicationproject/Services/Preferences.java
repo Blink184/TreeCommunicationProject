@@ -1,4 +1,4 @@
-package com.blink.treecommunicationproject.Libs;
+package com.blink.treecommunicationproject.Services;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,13 +12,10 @@ public class Preferences {
     public static String ISLOGGEDIN = "ISLOGGEDIN";
     public static String PROFILEPICTURE = "PROFILEPICTURE";
 
-    public static String TRACKERENABLED = "TRACKERENABLED";
-
     public static String NOTIFICATIONENABLED = "NOTIFICATIONENABLED";
-    public static String MAXNOTIFICATIONDISTANCE = "MAXNOTIFICATIONDISTANCE";
     public static String NOTIFICATIONTIMEINTERVAL  = "NOTIFICATIONTIMEINTERVAL";
 
-    public static String COM = "com.ahmadhammoud.fragments";
+    public static String COM = "com.blink.treecommunicationproject";
     private SharedPreferences prefs;
 
     public Preferences(Context context){

@@ -1,4 +1,4 @@
-package com.blink.treecommunicationproject.Web;
+package com.blink.treecommunicationproject.Web.Database;
 
 import com.blink.treecommunicationproject.Objects.Employee;
 
