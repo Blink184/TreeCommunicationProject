@@ -11,35 +11,33 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.R;
+
+import java.util.List;
 
 public class HomeFragmentGridItemAdapter extends BaseAdapter{
     private Context mContext;
-    private final String[] ppl;
-    private final int[] imageId;
+    private final List<Employee> employees;
 
-    public HomeFragmentGridItemAdapter(Context c,String[] web,int[] Imageid ) {
+    public HomeFragmentGridItemAdapter(Context c, List<Employee> employees) {
         mContext = c;
-        this.imageId = Imageid;
-        this.ppl = web;
+        this.employees = employees;
     }
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
-        return ppl.length;
+        return employees.size();
     }
 
     @Override
     public Object getItem(int position) {
-        // TODO Auto-generated method stub
-        return null;
+        return employees.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        // TODO Auto-generated method stub
-        return 0;
+        return position;
     }
 
     @Override
@@ -55,8 +53,8 @@ public class HomeFragmentGridItemAdapter extends BaseAdapter{
             grid = inflater.inflate(R.layout.fragment_home_grid_item, null);
             TextView textView = (TextView) grid.findViewById(R.id.grid_text);
             ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
-            textView.setText(ppl[position]);
-            imageView.setImageResource(imageId[position]);
+            textView.setText(employees.get(position).getFullName());
+            imageView.setImageBitmap(employees.get(position).getPicture());
         } else {
             grid = (View) convertView;
         }
