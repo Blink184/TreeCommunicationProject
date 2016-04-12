@@ -1,9 +1,7 @@
 package com.blink.treecommunicationproject.Activities;
 
 
-import android.app.Application;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.blink.treecommunicationproject.R;
-import com.blink.treecommunicationproject.Web.DatabaseMethods;
+import com.blink.treecommunicationproject.Web.Database.DatabaseMethods;
 
 /**
  * Created by Aynur on 4/10/2016
