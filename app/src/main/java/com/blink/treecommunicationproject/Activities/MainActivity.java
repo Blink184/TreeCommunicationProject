@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
+import com.blink.treecommunicationproject.Activities.Fragments.HomeFragment;
 import com.blink.treecommunicationproject.Libs.Drawer.NavigationDrawerCallbacks;
 import com.blink.treecommunicationproject.Libs.Drawer.NavigationDrawerFragment;
 import com.blink.treecommunicationproject.Libs.ProgressBar;
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setAppropriateWelcomeMessage();
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
@@ -44,11 +44,30 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 
     }
 
-    private void setAppropriateWelcomeMessage() {
-
+    private void navigateTo(int position) {
+        try {
+            Fragment fragment = null;
+            switch (position) {
+                case 0:
+                    fragment = new HomeFragment();
+                    break;
+                default:
+                    break;
+            }
+            if(fragment != null) {
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, fragment)
+                        .commit();
+                if(mNavigationDrawerFragment != null)
+                    mNavigationDrawerFragment.closeDrawer();
+            }
+        } catch (Exception ex){
+            Toast.makeText(getApplicationContext(),"navigateTo + " + position + ex.getMessage(),Toast.LENGTH_LONG).show();
+        }
     }
 
     public void onNavigationDrawerItemSelected(int position) {
-        /*navigateTo(position);*/
+        navigateTo(position);
     }
 }
