@@ -1,0 +1,42 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.blink.treecommunicationproject.Activities.Fragments.TaskFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:text="Assign New Task"
+                android:id="@+id/btnAssignNewTask"
+                android:background="@drawable/round_btn"
+                android:textColor="@color/black"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="right" />
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lvTasks"
+                android:layout_gravity="center"
+                android:layout_below="@+id/btnAssignNewTask"
+                android:choiceMode="singleChoice"
+                android:clickable="true"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="false" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
