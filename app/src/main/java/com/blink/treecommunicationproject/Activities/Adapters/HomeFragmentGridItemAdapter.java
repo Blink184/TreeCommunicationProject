@@ -4,7 +4,9 @@ package com.blink.treecommunicationproject.Activities.Adapters;
  * Created by ahmad hammoud on 4/12/2016.
  */
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 
 import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.R;
+import com.joooonho.SelectableRoundedImageView;
 
 import java.util.List;
 
@@ -52,7 +55,23 @@ public class HomeFragmentGridItemAdapter extends BaseAdapter{
             grid = new View(mContext);
             grid = inflater.inflate(R.layout.fragment_home_grid_item, null);
             TextView textView = (TextView) grid.findViewById(R.id.grid_text);
-            ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
+            final SelectableRoundedImageView imageView = (SelectableRoundedImageView )grid.findViewById(R.id.grid_image);
+            /*imageView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()){
+                        case MotionEvent.ACTION_DOWN:{
+                            imageView.setBorderColor(Color.RED);
+                            break;
+                        }
+                        case MotionEvent.ACTION_UP:{
+                            imageView.setBorderColor(Color.BLUE);
+                            break;
+                        }
+                    }
+                    return false;
+                }
+            });*/
             textView.setText(employees.get(position).getFullName());
             imageView.setImageBitmap(employees.get(position).getPicture());
         } else {

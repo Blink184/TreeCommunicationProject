@@ -52,12 +52,12 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
         if (convertView == null) {
             list = new View(mContext);
             list = inflater.inflate(R.layout.fragment_task_list_item, null);
-            TextView to = (TextView) list.findViewById(R.id.tvTo);
+            /*TextView to = (TextView) list.findViewById(R.id.tvTo);
             TextView description = (TextView) list.findViewById(R.id.tvDescription);
             CheckBox checkBoxDone = (CheckBox) list.findViewById(R.id.cbDone);
             checkBoxDone.setChecked(false);
             to.setText(tasks.get(position).getToEmployee().getFullName());
-            description.setText(tasks.get(position).getDescription());
+            description.setText(tasks.get(position).getDescription());*/
         } else {
             list = (View) convertView;
         }
