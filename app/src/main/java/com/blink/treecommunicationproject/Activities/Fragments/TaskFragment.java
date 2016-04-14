@@ -54,13 +54,13 @@ public class TaskFragment extends Fragment {
         TaskFragmentListItemAdapter adapter = new TaskFragmentListItemAdapter(getActivity(), tasks);
         listOfTasks.setAdapter(adapter);
 
-        listOfTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        assignNewTask.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onClick(View v) {
                 Fragment fragment = new AssignNewTaskFragment();
                 FragmentManager fragmentManager = getActivity().getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.drawer, fragment);
+                fragmentTransaction.replace(R.id.container, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
