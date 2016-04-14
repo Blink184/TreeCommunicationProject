@@ -2,56 +2,67 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:orientation="vertical"
 android:layout_width="fill_parent"
-android:layout_height="100dp">
+android:layout_height="fill_parent">
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="572dp"
     android:background="@color/almost_Gray"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:background="@color/Color_48"
-        android:layout_height="wrap_content">
+        android:layout_height="fill_parent"
+        android:layout_weight="10">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:layout_weight="10">
+            android:layout_weight="7">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:padding="5dp"
-                android:text="Tasks"
-                android:id="@+id/tvTasks" />
+                android:text="@string/tasks"
+                android:textColor="@color/myTextPrimaryColor"
+                android:id="@+id/tvTasks"
+                android:layout_margin="10dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1">
-            <Button
+            <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/add_new_task"
                 android:textAllCaps="false"
                 android:textColor="@color/kinda_White"
-                android:background="@drawable/round_btn_task"
                 android:id="@+id/btnAssignNewTask"
-                android:layout_margin="5dp" />
+                android:src="@drawable/add_btn"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:layout_margin="5dp"
+                android:maxHeight="10dp"
+                android:maxWidth="10dp"
+                android:minHeight="10dp"
+                android:minWidth="10dp"
+                android:background="@color/Color_48" />
 
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:background="@color/almost_Gray"
         android:orientation="horizontal"
-        android:layout_height="match_parent">
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
 
         <ListView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/listView"
+            android:layout_height="fill_parent"
+            android:id="@+id/lvTasks"
             android:layout_gravity="center"
             android:layout_below="@+id/btnAssignNewTask"
             android:choiceMode="singleChoice"
