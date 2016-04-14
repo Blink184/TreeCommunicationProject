@@ -1,19 +1,27 @@
 package com.blink.treecommunicationproject.Activities.Fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blink.treecommunicationproject.Activities.Adapters.HomeFragmentGridItemAdapter;
 import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.R;
+import com.blink.treecommunicationproject.Services.Global;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +32,8 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     private GridView grid;
     private View rootView;
+    private TextView tvRootEmployeeName;
+    private TextView tvRootEmployeeType;
     private List<Employee> employees = new ArrayList<>();
 
 
@@ -37,6 +47,13 @@ public class HomeFragment extends Fragment {
     private void initialize() {
         fillFakeData();
         grid = (GridView) rootView.findViewById(R.id.grid);
+
+        tvRootEmployeeName = (TextView) rootView.findViewById(R.id.tvRootEmployeeName);
+        tvRootEmployeeType = (TextView) rootView.findViewById(R.id.tvRootEmployeeType);
+
+        tvRootEmployeeName.setText(Global.user.getFullName());
+        tvRootEmployeeType.setText(Global.user.getEmployeeType().toString());
+
         HomeFragmentGridItemAdapter adapter = new HomeFragmentGridItemAdapter(getActivity(), employees);
         grid.setAdapter(adapter);
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -45,9 +62,44 @@ public class HomeFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 Toast.makeText(getActivity(), "You Clicked on " + employees.get(position).getFullName(), Toast.LENGTH_SHORT).show();
-
+                parent.showContextMenuForChild(view);
             }
         });
+        registerForContextMenu(grid);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+        menu.setHeaderTitle(employees.get(info.position).getFullName());
+        //TODO : not hardcoding it
+        menu.add(0, v.getId(), 0, "View Profile");//groupId, itemId, order, title
+        menu.add(0, v.getId(), 0, "View Employees");
+        menu.add(0, v.getId(), 0, "Assign a Task");
+        menu.add(0, v.getId(), 0, "Send a Message");
+        menu.add(0, v.getId(), 0, "Add to Broadcast List");
+    }
+
+    public boolean onContextItemSelected(MenuItem item){
+        if(item.getTitle().equals("View Profile")){
+            Log.i("asd", "1");
+        }else if(item.getTitle().equals("View Employees")){
+            Log.i("asd", "2");
+        }else if(item.getTitle().equals("Assign a Task")){
+            FragmentManager fragmentManager = getFragmentManager();
+            Fragment fragment = new TaskFragment();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .commit();
+        }else if(item.getTitle().equals("Send a Message")){
+            Log.i("asd", "4");
+        }else if(item.getTitle().equals("Add to Broadcast List")){
+            Log.i("asd", "5");
+        }else{
+            return false;
+        }
+        return true;
     }
 
     private void fillFakeData() {
