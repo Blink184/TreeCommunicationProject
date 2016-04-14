@@ -33,7 +33,7 @@ public class TaskFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_task, container, false);
 
         tasks.add(new Task(0, Global.user, new Employee(0, "Susan", "J. Mordigan", "03555666", Employee.EmployeeType.Advisor), new Date(), "Meeting at 13:00."));
-        tasks.add(new Task(1, Global.user, new Employee(0, "Jack", "Black", "78959565", Employee.EmployeeType.Responsible), new Date(), "Print the documents."));
+        tasks.add(new Task(1, Global.user, new Employee(0, "Jack", "Black", "78959565", Employee.EmployeeType.Responsible), new Date(), "Print the documents for Steve."));
         tasks.add(new Task(2, Global.user, new Employee(0, "Elie", "Nassar", "70112547", Employee.EmployeeType.Responsible), new Date(), "Send the documents"));
         tasks.add(new Task(3, Global.user, new Employee(0, "Jack", "Black", "81235689", Employee.EmployeeType.Director), new Date(), "Assign tasks to people discussed in yesterday's meeting."));
 
@@ -47,10 +47,7 @@ public class TaskFragment extends Fragment {
 
         TaskFragmentListItemAdapter adapter = new TaskFragmentListItemAdapter(getActivity(), tasks);
         listOfTasks.setAdapter(adapter);
-//        grid = (GridView) rootView.findViewById(R.id.grid);
-//
-//        HomeFragmentGridItemAdapter adapter = new HomeFragmentGridItemAdapter(getActivity(), ppl, imageId);
-//        grid.setAdapter(adapter);
+
 //        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //
 //            @Override
