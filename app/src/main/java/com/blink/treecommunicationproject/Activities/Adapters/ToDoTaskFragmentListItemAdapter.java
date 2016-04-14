@@ -11,19 +11,17 @@ import android.widget.TextView;
 import com.blink.treecommunicationproject.Objects.Task;
 import com.blink.treecommunicationproject.R;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by Kirby on 4/12/2016.
+ * Created by Kirby on 4/14/2016.
  */
-public class TaskFragmentListItemAdapter extends BaseAdapter{
+public class ToDoTaskFragmentListItemAdapter extends BaseAdapter {
+
     private Context mContext;
     private final ArrayList<Task> tasks;
 
-    public TaskFragmentListItemAdapter(Context c, ArrayList<Task> tasks) {
+    public ToDoTaskFragmentListItemAdapter(Context c, ArrayList<Task> tasks) {
         mContext = c;
         this.tasks = tasks;
     }
@@ -52,13 +50,13 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
         if (convertView == null) {
             list = new View(mContext);
 
-            list = inflater.inflate(R.layout.fragment_task_list_item, parent, false);
+            list = inflater.inflate(R.layout.fragment_to_do_task_list_item, parent, false);
 
-            TextView to = (TextView) list.findViewById(R.id.tvTo);
+            TextView from = (TextView) list.findViewById(R.id.tvFrom);
             TextView description = (TextView) list.findViewById(R.id.tvDescription);
             CheckBox checkBoxDone = (CheckBox) list.findViewById(R.id.cbDone);
             checkBoxDone.setChecked(false);
-            to.setText(tasks.get(position).getToEmployee().getFullName());
+            from.setText(tasks.get(position).getFromEmployee().getFullName());
             description.setText(tasks.get(position).getDescription());
         } else {
             list = (View) convertView;
