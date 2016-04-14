@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.blink.treecommunicationproject.Activities.Fragments.HomeFragment;
 import com.blink.treecommunicationproject.Activities.Fragments.TaskFragment;
+import com.blink.treecommunicationproject.Activities.Fragments.ToDoTaskFragment;
 import com.blink.treecommunicationproject.Services.Drawer.NavigationDrawerCallbacks;
 import com.blink.treecommunicationproject.Services.Drawer.NavigationDrawerFragment;
 import com.blink.treecommunicationproject.Services.ProgressBar;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                     break;
                 case 1:
                     fragment = new TaskFragment();
+                    break;
+                case 2:
+                    fragment = new ToDoTaskFragment();
                     break;
                 default:
                     break;
