@@ -26,6 +26,8 @@ android:layout_height="fill_parent">
                 android:padding="5dp"
                 android:text="@string/tasks"
                 android:textColor="@color/myTextPrimaryColor"
+                android:textSize="@dimen/task_font_size"
+                android:textStyle="bold"
                 android:id="@+id/tvTasks"
                 android:layout_margin="10dp" />
         </LinearLayout>
@@ -40,7 +42,7 @@ android:layout_height="fill_parent">
                 android:textAllCaps="false"
                 android:textColor="@color/kinda_White"
                 android:id="@+id/btnAssignNewTask"
-                android:src="@drawable/add_btn_white"
+                android:src="@drawable/add_btn_white2"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
                 android:layout_margin="5dp"
@@ -66,7 +68,8 @@ android:layout_height="fill_parent">
             android:layout_gravity="center"
             android:layout_below="@+id/btnAssignNewTask"
             android:choiceMode="singleChoice"
-            android:clickable="true"/>
+            android:clickable="true"
+            android:layout_margin="2dp" />
     </LinearLayout>
 
 </LinearLayout>

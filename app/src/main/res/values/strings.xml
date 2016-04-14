@@ -45,4 +45,6 @@
 
     <string name="add_new_task">Add New Task</string>
     <string name="tasks">Tasks</string>
+    <string name="todo_tasks">To Do Tasks</string>
+    <string name="cb_done">Done</string>
 </resources>
