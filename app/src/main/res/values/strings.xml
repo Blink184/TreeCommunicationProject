@@ -24,7 +24,7 @@
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="support">Contact us</string>
-    <string name="hint_description">Description</string>
+    <string name="hint_description">Description:</string>
     <string name="hint_location">Location</string>
     <string name="title_activity_broadcast_dialog">BroadcastDialogActivity</string>
 
@@ -47,4 +47,5 @@
     <string name="tasks">Tasks</string>
     <string name="todo_tasks">To Do Tasks</string>
     <string name="cb_done">Done</string>
+    <string name="to">To:</string>
 </resources>
