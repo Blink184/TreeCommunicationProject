@@ -1,8 +1,10 @@
 package com.blink.treecommunicationproject.Activities.Fragments;
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -14,6 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.blink.treecommunicationproject.Activities.Adapters.ObjectAdapters.AutoCompleteTVItemAdapter;
 import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
@@ -32,13 +35,14 @@ public class AssignNewTaskFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_task, container, false);
+        rootView = inflater.inflate(R.layout.fragment_assign_new_task, container, false);
 
         toEmployees.add(new Employee(0, "Susan", "J. Mordigan", "03555666", Employee.EmployeeType.Advisor));
         toEmployees.add(new Employee(0, "Jack", "Black", "78959565", Employee.EmployeeType.Responsible));
         toEmployees.add(new Employee(0, "Elie", "Nassar", "70112547", Employee.EmployeeType.Responsible));
         toEmployees.add(new Employee(0, "John", "Blue", "81235689", Employee.EmployeeType.Director));
 
+        initialize();
         return rootView;
     }
 
@@ -46,7 +50,10 @@ public class AssignNewTaskFragment extends Fragment {
         send = (ImageButton) rootView.findViewById(R.id.btnSendTask);
         actvToEmployee = (AutoCompleteTextView) rootView.findViewById(R.id.actvToEmployee);
 
+        AutoCompleteTVItemAdapter actvAdapter = new AutoCompleteTVItemAdapter(getActivity().getApplicationContext(), toEmployees);
 
+        actvToEmployee.setAdapter(actvAdapter);
+        actvToEmployee.setThreshold(1);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
