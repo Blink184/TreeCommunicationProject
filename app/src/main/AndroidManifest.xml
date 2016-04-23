@@ -16,6 +16,9 @@
         </activity>
         <activity android:name=".Activities.MainActivity"
             android:label="Main"/>
+        <activity android:name=".Dialogs.EmployeeProfileActivity"
+            android:theme="@android:style/Theme.Holo.Light.Dialog"
+            android:label="Employee Profile"/>
     </application>
 
 </manifest>

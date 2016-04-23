@@ -52,7 +52,7 @@ public class HomeFragmentGridItemAdapter extends BaseAdapter{
         if (convertView == null) {
             grid = inflater.inflate(R.layout.fragment_home_grid_item, null);
             TextView textView = (TextView) grid.findViewById(R.id.grid_text);
-            final SelectableRoundedImageView imageView = (SelectableRoundedImageView )grid.findViewById(R.id.grid_image);
+            SelectableRoundedImageView imageView = (SelectableRoundedImageView )grid.findViewById(R.id.grid_image);
             /*imageView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
