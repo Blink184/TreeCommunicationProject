@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,35 +35,59 @@ public class HomeFragment extends Fragment {
     private GridView grid;
     private View rootView;
     private TextView tvRootEmployeeName;
+    private ImageButton ibBack;
     private TextView tvRootEmployeeType;
     private List<Employee> employees = new ArrayList<>();
+    private List<Employee> tmpDisplayedEmployees = new ArrayList<>();
+    private Employee tmpSelectedEmployee;
 
 
     public HomeFragment(){}
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        initialize();
+        fillFakeData();
+        Global.user.setChildrenEmployees(employees);
+        initialize(Global.user);
         return rootView;
     }
 
-    private void initialize() {
-        fillFakeData();
+    private void initialize(Employee employee) {
         grid = (GridView) rootView.findViewById(R.id.grid);
 
         tvRootEmployeeName = (TextView) rootView.findViewById(R.id.tvRootEmployeeName);
         tvRootEmployeeType = (TextView) rootView.findViewById(R.id.tvRootEmployeeType);
+        ibBack = (ImageButton) rootView.findViewById(R.id.ibBack);
 
-        tvRootEmployeeName.setText(Global.user.getFullName());
-        tvRootEmployeeType.setText(Global.user.getEmployeeType().toString());
+        loadEmployee(employee);
+    }
 
-        HomeFragmentGridItemAdapter adapter = new HomeFragmentGridItemAdapter(getActivity(), employees);
+    private void loadEmployee(final Employee employee) {
+
+        if(employee.hasParentEmployee()) {
+            ibBack.setVisibility(View.VISIBLE);
+            ibBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loadEmployee(employee.getParentEmployee());
+                }
+            });
+        }
+        else
+            ibBack.setVisibility(View.GONE);
+
+
+
+        tvRootEmployeeName.setText(employee.getFullName());
+        tvRootEmployeeType.setText(employee.getEmployeeType().toString());
+
+        tmpDisplayedEmployees = employee.getChildrenEmployees();
+        HomeFragmentGridItemAdapter adapter = new HomeFragmentGridItemAdapter(getActivity(), employee.getChildrenEmployees());
         grid.setAdapter(adapter);
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(getActivity(), "You Clicked on " + employees.get(position).getFullName(), Toast.LENGTH_SHORT).show();
                 parent.showContextMenuForChild(view);
             }
         });
@@ -72,7 +98,8 @@ public class HomeFragment extends Fragment {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
-        menu.setHeaderTitle(employees.get(info.position).getFullName());
+        tmpSelectedEmployee = tmpDisplayedEmployees.get(info.position);
+        menu.setHeaderTitle(tmpSelectedEmployee.getFullName());
         //TODO : not hardcoding it
         menu.add(0, v.getId(), 0, "View Profile");//groupId, itemId, order, title
         menu.add(0, v.getId(), 0, "View Employees");
@@ -83,19 +110,14 @@ public class HomeFragment extends Fragment {
 
     public boolean onContextItemSelected(MenuItem item){
         if(item.getTitle().equals("View Profile")){
-            Log.i("asd", "1");
         }else if(item.getTitle().equals("View Employees")){
-            Log.i("asd", "2");
+            loadEmployee(tmpSelectedEmployee);
         }else if(item.getTitle().equals("Assign a Task")){
-            FragmentManager fragmentManager = getFragmentManager();
-            Fragment fragment = new TaskFragment();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, fragment)
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.container, new TaskFragment())
                     .commit();
         }else if(item.getTitle().equals("Send a Message")){
-            Log.i("asd", "4");
         }else if(item.getTitle().equals("Add to Broadcast List")){
-            Log.i("asd", "5");
         }else{
             return false;
         }
@@ -105,20 +127,27 @@ public class HomeFragment extends Fragment {
     private void fillFakeData() {
         Bitmap b = BitmapFactory.decodeResource(getActivity().getResources(),
                 R.drawable.person);
-        employees.add(new Employee(1, "un", "pw", "Aynur", "Ajami", "70/122322", b, Employee.EmployeeType.President, null, null));
-        employees.add(new Employee(1, "un", "pw", "Ahmad", "Hammoud", "70/122322", b, Employee.EmployeeType.Advisor, null, null));
-        employees.add(new Employee(1, "un", "pw", "Azzam", "Mourad", "70/122322", b, Employee.EmployeeType.Responsible, null, null));
-        employees.add(new Employee(1, "un", "pw", "Jesse", "Pinkman", "70/122322", b, Employee.EmployeeType.Member, null, null));
-        employees.add(new Employee(1, "un", "pw", "Walter", "White", "70/122322", b, Employee.EmployeeType.Director, null, null));
-        employees.add(new Employee(1, "un", "pw", "John", "Snow", "70/122322", b, Employee.EmployeeType.Person, null, null));
-        employees.add(new Employee(1, "un", "pw", "Lara", "Croft", "70/122322", b, Employee.EmployeeType.Responsible, null, null));
-        employees.add(new Employee(1, "un", "pw", "Amy", "Lee", "70/122322", b, Employee.EmployeeType.Person, null, null));
-        employees.add(new Employee(1, "un", "pw", "Roy", "Fallon", "70/122322", b, Employee.EmployeeType.Advisor, null, null));
-        employees.add(new Employee(1, "un", "pw", "John", "Smith", "70/122322", b, Employee.EmployeeType.Person, null, null));
-        employees.add(new Employee(1, "un", "pw", "Jared", "Leto", "70/122322", b, Employee.EmployeeType.Advisor, null, null));
-        employees.add(new Employee(1, "un", "pw", "Samir", "Mounir", "70/122322", b, Employee.EmployeeType.Advisor, null, null));
-        employees.add(new Employee(1, "un", "pw", "Mike", "Stanley", "70/122322", b, Employee.EmployeeType.Advisor, null, null));
-        employees.add(new Employee(1, "un", "pw", "Tyrion", "Lannister", "70/122322", b, Employee.EmployeeType.Advisor, null, null));
-        employees.add(new Employee(1, "un", "pw", "Jaime", "Lannister", "70/122322", b, Employee.EmployeeType.Advisor, null, null));
+
+        List<Employee> aynurChildren = new ArrayList<>();
+        List<Employee> tmp = new ArrayList<>();
+        Employee aynur = new Employee(1, "un", "pw", "Aynur", "Ajami", "70/122322", b, Employee.EmployeeType.President, Global.user, aynurChildren);
+        aynurChildren.add(new Employee(1, "un", "pw", "Jared", "Leto", "70/122322", b, Employee.EmployeeType.Advisor, aynur, tmp));
+        aynurChildren.add(new Employee(1, "un", "pw", "Samir", "Mounir", "70/122322", b, Employee.EmployeeType.Advisor, aynur, tmp));
+        aynurChildren.add(new Employee(1, "un", "pw", "Mike", "Stanley", "70/122322", b, Employee.EmployeeType.Advisor, aynur, tmp));
+        aynurChildren.add(new Employee(1, "un", "pw", "Tyrion", "Lannister", "70/122322", b, Employee.EmployeeType.Advisor, aynur, tmp));
+        aynurChildren.add(new Employee(1, "un", "pw", "Jaime", "Lannister", "70/122322", b, Employee.EmployeeType.Advisor, aynur, tmp));
+
+
+        employees.add(aynur);
+        employees.add(new Employee(1, "un", "pw", "Ahmad", "Hammoud", "70/122322", b, Employee.EmployeeType.Advisor, Global.user, tmp));
+        employees.add(new Employee(1, "un", "pw", "Azzam", "Mourad", "70/122322", b, Employee.EmployeeType.Responsible, Global.user, tmp));
+        employees.add(new Employee(1, "un", "pw", "Jesse", "Pinkman", "70/122322", b, Employee.EmployeeType.Member, Global.user, tmp));
+        employees.add(new Employee(1, "un", "pw", "Walter", "White", "70/122322", b, Employee.EmployeeType.Director, Global.user, tmp));
+        employees.add(new Employee(1, "un", "pw", "John", "Snow", "70/122322", b, Employee.EmployeeType.Person, Global.user, tmp));
+        employees.add(new Employee(1, "un", "pw", "Lara", "Croft", "70/122322", b, Employee.EmployeeType.Responsible, Global.user, tmp));
+        employees.add(new Employee(1, "un", "pw", "Amy", "Lee", "70/122322", b, Employee.EmployeeType.Person, Global.user, tmp));
+        employees.add(new Employee(1, "un", "pw", "Roy", "Fallon", "70/122322", b, Employee.EmployeeType.Advisor, Global.user, tmp));
+        employees.add(new Employee(1, "un", "pw", "John", "Smith", "70/122322", b, Employee.EmployeeType.Person, Global.user, tmp));
+
     }
 }
