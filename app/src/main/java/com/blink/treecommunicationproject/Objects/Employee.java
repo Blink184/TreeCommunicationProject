@@ -68,7 +68,11 @@ public class Employee {
     }
 
     public String getFullName() {
-        return firstName + " " + lastName;
+        return getFirstName() + " " + getLastName();
+    }
+
+    public boolean hasParentEmployee() {
+        return getParentEmployee() != null;
     }
 
 
