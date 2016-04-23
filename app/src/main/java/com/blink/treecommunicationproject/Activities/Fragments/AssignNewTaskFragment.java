@@ -1,5 +1,6 @@
 package com.blink.treecommunicationproject.Activities.Fragments;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -7,6 +8,7 @@ import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,15 @@ public class AssignNewTaskFragment extends Fragment {
     private ArrayList<Employee> toEmployees = new ArrayList<>();
     private ImageButton send;
     private AutoCompleteTextView actvToEmployee;
+    private Employee selectedEmployee;
+
+    @SuppressLint("ValidFragment")
+    public AssignNewTaskFragment(Employee selectedEmployee) {
+        this.selectedEmployee = selectedEmployee;
+    }
+    public AssignNewTaskFragment() {
+
+    }
 
     @Nullable
     @Override
@@ -55,6 +66,9 @@ public class AssignNewTaskFragment extends Fragment {
         actvToEmployee.setAdapter(actvAdapter);
         actvToEmployee.setThreshold(1);
 
+        if(selectedEmployee != null){
+            actvToEmployee.setText(selectedEmployee.getFullName());
+        }
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

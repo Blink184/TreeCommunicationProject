@@ -2,6 +2,7 @@ package com.blink.treecommunicationproject.Activities.Fragments;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.Visibility;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blink.treecommunicationproject.Activities.Adapters.HomeFragmentGridItemAdapter;
+import com.blink.treecommunicationproject.Dialogs.EmployeeProfileActivity;
 import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
@@ -110,18 +112,30 @@ public class HomeFragment extends Fragment {
 
     public boolean onContextItemSelected(MenuItem item){
         if(item.getTitle().equals("View Profile")){
+            viewProfile(tmpSelectedEmployee);
         }else if(item.getTitle().equals("View Employees")){
             loadEmployee(tmpSelectedEmployee);
         }else if(item.getTitle().equals("Assign a Task")){
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.container, new TaskFragment())
-                    .commit();
+            assignTask(tmpSelectedEmployee);
         }else if(item.getTitle().equals("Send a Message")){
         }else if(item.getTitle().equals("Add to Broadcast List")){
         }else{
             return false;
         }
         return true;
+    }
+
+    private void viewProfile(Employee tmpSelectedEmployee) {
+        Intent i = new Intent(rootView.getContext(), EmployeeProfileActivity.class);
+        i.putExtra("name", tmpSelectedEmployee.getFullName());
+        i.putExtra("type", tmpSelectedEmployee.getEmployeeType().toString());
+        startActivity(i);
+    }
+
+    private void assignTask(Employee tmpSelectedEmployee) {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, new AssignNewTaskFragment(tmpSelectedEmployee))
+                .commit();
     }
 
     private void fillFakeData() {
