@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.blink.treecommunicationproject.Activities.Fragments.HomeFragment;
+import com.blink.treecommunicationproject.Activities.Fragments.SendMessageFragment;
 import com.blink.treecommunicationproject.Activities.Fragments.TaskFragment;
 import com.blink.treecommunicationproject.Activities.Fragments.ToDoTaskFragment;
 import com.blink.treecommunicationproject.Services.Drawer.NavigationDrawerCallbacks;
@@ -50,6 +51,9 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                     break;
                 case 2:
                     fragment = new ToDoTaskFragment();
+                    break;
+                case 3:
+                    fragment = new SendMessageFragment();
                     break;
                 default:
                     break;

@@ -76,7 +76,7 @@
                     android:layout_height="match_parent"
                     android:enabled="true"
                     android:gravity="top"
-                    android:textIsSelectable="true"
+                    android:inputType="text"
                     android:id="@+id/etDescription"
                     android:editable="true" />
 
