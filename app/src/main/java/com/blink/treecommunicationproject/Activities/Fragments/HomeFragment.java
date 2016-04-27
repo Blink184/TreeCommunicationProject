@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment {
     private View rootView;
     private TextView tvRootEmployeeName;
     private ImageButton ibBack;
+    private ImageButton ibBroadcast;
     private TextView tvRootEmployeeType;
     private List<Employee> employees = new ArrayList<>();
     private List<Employee> tmpDisplayedEmployees = new ArrayList<>();
@@ -59,6 +60,7 @@ public class HomeFragment extends Fragment {
         tvRootEmployeeName = (TextView) rootView.findViewById(R.id.tvRootEmployeeName);
         tvRootEmployeeType = (TextView) rootView.findViewById(R.id.tvRootEmployeeType);
         ibBack = (ImageButton) rootView.findViewById(R.id.ibBack);
+        ibBroadcast = (ImageButton) rootView.findViewById(R.id.ibBroadcast);
 
         loadEmployee(employee);
     }
@@ -66,6 +68,7 @@ public class HomeFragment extends Fragment {
     private void loadEmployee(final Employee employee) {
 
         if(employee.hasParentEmployee()) {
+            ibBroadcast.setVisibility(View.GONE);
             ibBack.setVisibility(View.VISIBLE);
             ibBack.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,9 +77,10 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
-        else
+        else {
             ibBack.setVisibility(View.GONE);
-
+            ibBroadcast.setVisibility(View.VISIBLE);
+        }
 
 
         tvRootEmployeeName.setText(employee.getFullName());
@@ -118,11 +122,18 @@ public class HomeFragment extends Fragment {
         }else if(item.getTitle().equals("Assign a Task")){
             assignTask(tmpSelectedEmployee);
         }else if(item.getTitle().equals("Send a Message")){
+            sendMessage(tmpSelectedEmployee);
         }else if(item.getTitle().equals("Add to Broadcast List")){
         }else{
             return false;
         }
         return true;
+    }
+
+    private void sendMessage(Employee tmpSelectedEmployee) {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.container, new SendMessageFragment(tmpSelectedEmployee))
+                .commit();
     }
 
     private void viewProfile(Employee tmpSelectedEmployee) {
