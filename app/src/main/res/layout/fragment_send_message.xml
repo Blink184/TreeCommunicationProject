@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/add_new_task"
+            android:text="@string/send_message"
             android:textSize="@dimen/task_font_size"
             android:textStyle="bold"/>
     </LinearLayout>
@@ -120,7 +120,7 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnSendTask"
+                android:id="@+id/btnSendMessage"
                 android:src="@drawable/ic_send_white_"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
