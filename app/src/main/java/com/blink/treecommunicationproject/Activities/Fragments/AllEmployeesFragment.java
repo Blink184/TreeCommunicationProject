@@ -30,7 +30,7 @@ import java.util.List;
 
 public class AllEmployeesFragment extends Fragment {
 
-    private ListView listOfTasks;
+    private ListView lvEmployees;
     private View rootView;
     private EditText etFilter;
 
@@ -51,12 +51,12 @@ public class AllEmployeesFragment extends Fragment {
     }
 
     private void initialize() {
-        listOfTasks = (ListView) rootView.findViewById(R.id.lvEmployees);
+        lvEmployees = (ListView) rootView.findViewById(R.id.lvEmployees);
         etFilter = (EditText) rootView.findViewById(R.id.etFilter);
 
         final AllEmployeesFragmentListItemAdapter adapter = new AllEmployeesFragmentListItemAdapter(getActivity(), employees);
-        listOfTasks.setAdapter(adapter);
-        listOfTasks.setTextFilterEnabled(true);
+        lvEmployees.setAdapter(adapter);
+        lvEmployees.setTextFilterEnabled(true);
 
         etFilter.addTextChangedListener(new TextWatcher() {
             @Override
