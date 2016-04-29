@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.blink.treecommunicationproject.Activities.Fragments.AssignNewTaskFragment"
@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/send_message"
+            android:text="@string/send_broadcast"
             android:textSize="@dimen/task_font_size"
             android:textStyle="bold"/>
     </LinearLayout>
@@ -127,4 +127,4 @@
                 android:layout_margin="10dp" />
         </LinearLayout>
     </LinearLayout>
-    </FrameLayout>
+    </LinearLayout>
