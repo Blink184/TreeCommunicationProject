@@ -20,15 +20,15 @@ import java.util.List;
  * Created by Kirby on 4/12/2016.
  */
 public class AllEmployeesFragmentListItemAdapter extends BaseAdapter implements Filterable{
-    private Context mContext;
-    private ArrayList<Employee> employees = null;
+    private LayoutInflater mInflater;
+    private ArrayList<Employee> originalEmployees = null;
     private ArrayList<Employee> filteredEmployees = null;
-    private EmployeeFilter employeeFilter = new EmployeeFilter();
+    private EmployeeFilter employeeFilter;
 
     public AllEmployeesFragmentListItemAdapter(Context c, ArrayList<Employee> employees) {
-        mContext = c;
-        this.employees = employees;
-        this.filteredEmployees  = employees;
+        this.originalEmployees = employees;
+        this.filteredEmployees  = new ArrayList<>(employees);
+        mInflater = LayoutInflater.from(c);
     }
 
     @Override
@@ -43,76 +43,124 @@ public class AllEmployeesFragmentListItemAdapter extends BaseAdapter implements 
 
     @Override
     public long getItemId(int position) {
-        return filteredEmployees.get(position).getId();
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View list;
-        LayoutInflater inflater = (LayoutInflater) mContext
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        // A ViewHolder keeps references to children views to avoid unnecessary calls
+        // to findViewById() on each row.
+        ViewHolder holder;
 
+        // When convertView is not null, we can reuse it directly, there is no need
+        // to reinflate it. We only inflate a new View when the convertView supplied
+        // by ListView is null.
         if (convertView == null) {
-            list = inflater.inflate(R.layout.fragment_all_employees_list_item, parent, false);
+            convertView = mInflater.inflate(R.layout.fragment_all_employees_list_item, null);
 
-            TextView tvName = (TextView) list.findViewById(R.id.tvName);
-            TextView tvType = (TextView) list.findViewById(R.id.tvType);
-            TextView tvPhone = (TextView) list.findViewById(R.id.tvPhone);
-            tvName.setText(employees.get(position).getFullName());
-            tvType.setText(employees.get(position).getEmployeeType().toString());
-            tvPhone.setText(employees.get(position).getPhoneNumber());
+            // Creates a ViewHolder and store references to the two children views
+            // we want to bind data to.
+            holder = new ViewHolder();
+            holder.name = (TextView) convertView.findViewById(R.id.tvName);
+            holder.type = (TextView) convertView.findViewById(R.id.tvType);
+            holder.phone = (TextView) convertView.findViewById(R.id.tvPhone);
+
+            // Bind the data efficiently with the holder.
+
+            convertView.setTag(holder);
         } else {
-            list = convertView;
+            // Get the ViewHolder back to get fast access to the TextView
+            // and the ImageView.
+            holder = (ViewHolder) convertView.getTag();
         }
 
-        return list;
+        // If weren't re-ordering this you could rely on what you set last time
+        holder.name.setText(filteredEmployees.get(position).getFullName());
+        holder.type.setText(filteredEmployees.get(position).getEmployeeType().toString());
+        holder.phone.setText(filteredEmployees.get(position).getFullName());
 
+        return convertView;
+    }
+
+    static class ViewHolder {
+        TextView name;
+        TextView type;
+        TextView phone;
     }
 
     @Override
     public Filter getFilter() {
+        if (employeeFilter == null)
+            employeeFilter = new EmployeeFilter();
         return employeeFilter;
     }
-    private class EmployeeFilter extends Filter {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
+//    private class EmployeeFilter extends Filter {
+//        @Override
+//        protected FilterResults performFiltering(CharSequence constraint) {
+//
+//            String filterString = constraint.toString().toLowerCase();
+//
+//            FilterResults results = new FilterResults();
+//
+//            if(filterString.length() > 0) {
+//                final List<Employee> list = originalEmployees;
+//
+//                int count = list.size();
+//                final ArrayList<Employee> nlist = new ArrayList<Employee>(count);
+//
+//                Employee filteredEmployee;
+//
+//                for (int i = 0; i < count; i++) {
+//                    filteredEmployee = list.get(i);
+//                    if (filteredEmployee.getFullName().toLowerCase().contains(filterString)) {
+//                        nlist.add(filteredEmployee);
+//                    }
+//                }
+//
+//                results.values = nlist;
+//                results.count = nlist.size();
+//            } else{
+//                results.values = filteredEmployees;
+//                results.count = filteredEmployees.size();
+//            }
+//            return results;
+//        }
+//
+//        @SuppressWarnings("unchecked")
+//        @Override
+//        protected void publishResults(CharSequence constraint, FilterResults results) {
+//            filteredEmployees.clear();
+//            filteredEmployees.addAll((Collection<? extends Employee>) results.values);
+//            notifyDataSetChanged();
+//        }
+//    }
+private class EmployeeFilter extends Filter {
+    @Override
+    protected FilterResults performFiltering(CharSequence constraint) {
 
-            String filterString = constraint.toString().toLowerCase();
+        String filterString = constraint.toString().toLowerCase();
 
-            FilterResults results = new FilterResults();
+        FilterResults results = new FilterResults();
 
-            if(filterString.length() > 0) {
-                final List<Employee> list = employees;
+        filteredEmployees.clear();
 
-                int count = list.size();
-                final ArrayList<Employee> nlist = new ArrayList<Employee>();
-
-                Employee filteredEmployee;
-
-                for (int i = 0; i < count; i++) {
-                    filteredEmployee = list.get(i);
-                    if (filteredEmployee.getFullName().toLowerCase().contains(filterString)) {
-                        nlist.add(filteredEmployee);
-                    }
-                }
-
-                results.values = nlist;
-                results.count = nlist.size();
-            } else{
-                results.values = employees;
-                results.count = employees.size();
+        for(Employee emp : originalEmployees){
+            if(emp.getFullName().toLowerCase().contains(filterString)){
+                filteredEmployees.add(emp);
             }
-            return results;
         }
 
-        @SuppressWarnings("unchecked")
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            filteredEmployees.clear();
-            filteredEmployees.addAll((Collection<? extends Employee>) results.values);
-            notifyDataSetChanged();
-        }
+        results.values = filteredEmployees;
+        results.count = filteredEmployees.size();
+        return results;
     }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    protected void publishResults(CharSequence constraint, FilterResults results) {
+        notifyDataSetChanged();
+    }
+}
 }
 
 
