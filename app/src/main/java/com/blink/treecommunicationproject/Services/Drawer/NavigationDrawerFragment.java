@@ -172,14 +172,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         items.add(new NavigationItem("Tasks", getResources().getDrawable(R.drawable.drawer_help)));
         items.add(new NavigationItem("To Do Tasks", getResources().getDrawable(R.drawable.drawer_help)));
         items.add(new NavigationItem("Send Message", getResources().getDrawable(R.drawable.drawer_help)));
+        items.add(new NavigationItem("All Employees", getResources().getDrawable(R.drawable.drawer_help)));
 
-//        items.add(new NavigationItem("Traffic Lights", getResources().getDrawable(R.drawable.drawer_lights)));
-//        items.add(new NavigationItem("Broadcast", getResources().getDrawable(R.drawable.drawer_broadcast)));
-//        items.add(new NavigationItem("Notifications", getResources().getDrawable(R.drawable.drawer_notifications)));
-//        items.add(new NavigationItem("Profile", getResources().getDrawable(R.drawable.drawer_profile)));
-//        items.add(new NavigationItem("Settings", getResources().getDrawable(R.drawable.drawer_settings)));
-//        items.add(new NavigationItem("Help", getResources().getDrawable(R.drawable.drawer_help)));
-//        items.add(new NavigationItem("Logout", getResources().getDrawable(R.drawable.drawer_logout)));
         return items;
     }
 
