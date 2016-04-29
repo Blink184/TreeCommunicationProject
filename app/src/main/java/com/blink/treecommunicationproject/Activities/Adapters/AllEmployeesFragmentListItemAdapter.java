@@ -94,73 +94,34 @@ public class AllEmployeesFragmentListItemAdapter extends BaseAdapter implements 
             employeeFilter = new EmployeeFilter();
         return employeeFilter;
     }
-//    private class EmployeeFilter extends Filter {
-//        @Override
-//        protected FilterResults performFiltering(CharSequence constraint) {
-//
-//            String filterString = constraint.toString().toLowerCase();
-//
-//            FilterResults results = new FilterResults();
-//
-//            if(filterString.length() > 0) {
-//                final List<Employee> list = originalEmployees;
-//
-//                int count = list.size();
-//                final ArrayList<Employee> nlist = new ArrayList<Employee>(count);
-//
-//                Employee filteredEmployee;
-//
-//                for (int i = 0; i < count; i++) {
-//                    filteredEmployee = list.get(i);
-//                    if (filteredEmployee.getFullName().toLowerCase().contains(filterString)) {
-//                        nlist.add(filteredEmployee);
-//                    }
-//                }
-//
-//                results.values = nlist;
-//                results.count = nlist.size();
-//            } else{
-//                results.values = filteredEmployees;
-//                results.count = filteredEmployees.size();
-//            }
-//            return results;
-//        }
-//
-//        @SuppressWarnings("unchecked")
-//        @Override
-//        protected void publishResults(CharSequence constraint, FilterResults results) {
-//            filteredEmployees.clear();
-//            filteredEmployees.addAll((Collection<? extends Employee>) results.values);
-//            notifyDataSetChanged();
-//        }
-//    }
-private class EmployeeFilter extends Filter {
-    @Override
-    protected FilterResults performFiltering(CharSequence constraint) {
 
-        String filterString = constraint.toString().toLowerCase();
+    private class EmployeeFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
 
-        FilterResults results = new FilterResults();
+            String filterString = constraint.toString().toLowerCase();
 
-        filteredEmployees.clear();
+            FilterResults results = new FilterResults();
 
-        for(Employee emp : originalEmployees){
-            if(emp.getFullName().toLowerCase().contains(filterString)){
-                filteredEmployees.add(emp);
+            filteredEmployees.clear();
+
+            for(Employee emp : originalEmployees){
+                if(emp.getFullName().toLowerCase().contains(filterString)){
+                    filteredEmployees.add(emp);
+                }
             }
+
+            results.values = filteredEmployees;
+            results.count = filteredEmployees.size();
+            return results;
         }
 
-        results.values = filteredEmployees;
-        results.count = filteredEmployees.size();
-        return results;
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            notifyDataSetChanged();
+        }
     }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    protected void publishResults(CharSequence constraint, FilterResults results) {
-        notifyDataSetChanged();
-    }
-}
 }
 
 
