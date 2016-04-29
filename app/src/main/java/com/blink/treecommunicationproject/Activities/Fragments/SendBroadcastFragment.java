@@ -35,7 +35,7 @@ public class SendBroadcastFragment extends Fragment {
     ArrayList<Employee> toEmployee = new ArrayList<Employee>();
 
     public SendBroadcastFragment() {
-        // Required empty public constructor
+        selectedEmployees = null;
     }
 
     @SuppressLint("ValidFragment")
@@ -48,7 +48,7 @@ public class SendBroadcastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.fragment_send_message, container, false);
+        rootView = inflater.inflate(R.layout.fragment_broadcast, container, false);
         initialize();
         return rootView;
 
@@ -82,7 +82,6 @@ public class SendBroadcastFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
     }
 
     private void fillFakeData() {

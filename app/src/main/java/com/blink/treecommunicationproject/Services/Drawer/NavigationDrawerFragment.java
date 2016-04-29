@@ -172,12 +172,12 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         items.add(new NavigationItem("Tasks", getResources().getDrawable(R.drawable.drawer_help)));
         items.add(new NavigationItem("To Do Tasks", getResources().getDrawable(R.drawable.drawer_help)));
         items.add(new NavigationItem("Send Message", getResources().getDrawable(R.drawable.drawer_help)));
+        items.add(new NavigationItem("Send Broadcast", getResources().getDrawable(R.drawable.drawer_help)));
         items.add(new NavigationItem("All Employees", getResources().getDrawable(R.drawable.drawer_help)));
 
         return items;
     }
 
-    //batikha has errors... does not commit with errors
     /**
      * Changes the icon of the drawer to back
      */
