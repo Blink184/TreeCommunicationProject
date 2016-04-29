@@ -28,6 +28,7 @@ public class SendMessageFragment extends Fragment {
     private ImageButton send;
     private AutoCompleteTextView actvToEmployee;
     private Employee selectedEmployee;
+    private ArrayList<Employee> toEmployee = new ArrayList<Employee>();
 
     public SendMessageFragment() {
         // Required empty public constructor
@@ -44,6 +45,12 @@ public class SendMessageFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_send_message, container, false);
+
+        toEmployee.add(new Employee(0, "Susan", "J. Mordigan", "03555666", Employee.EmployeeType.Advisor));
+        toEmployee.add(new Employee(0, "Jack", "Black", "78959565", Employee.EmployeeType.Responsible));
+        toEmployee.add(new Employee(0, "Elie", "Nassar", "70112547", Employee.EmployeeType.Responsible));
+        toEmployee.add(new Employee(0, "John", "Blue", "81235689", Employee.EmployeeType.Director));
+
         initialize();
         return rootView;
 
@@ -52,8 +59,6 @@ public class SendMessageFragment extends Fragment {
     public void initialize() {
         send = (ImageButton) rootView.findViewById(R.id.btnSendMessage);
         actvToEmployee = (AutoCompleteTextView) rootView.findViewById(R.id.actvToEmployee);
-        ArrayList<Employee> toEmployee = new ArrayList<Employee>();
-        toEmployee.add(selectedEmployee);
 
         AutoCompleteTVItemAdapter actvAdapter = new AutoCompleteTVItemAdapter(getActivity().getApplicationContext(), toEmployee);
         actvToEmployee.setAdapter(actvAdapter);
