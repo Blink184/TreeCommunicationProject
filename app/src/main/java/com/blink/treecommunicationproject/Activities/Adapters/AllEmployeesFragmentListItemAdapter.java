@@ -13,6 +13,7 @@ import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class AllEmployeesFragmentListItemAdapter extends BaseAdapter implements 
     private Context mContext;
     private ArrayList<Employee> employees = null;
     private ArrayList<Employee> filteredEmployees = null;
-    private EmployeeFilter employeeFilter;
+    private EmployeeFilter employeeFilter = new EmployeeFilter();
 
     public AllEmployeesFragmentListItemAdapter(Context c, ArrayList<Employee> employees) {
         mContext = c;
@@ -32,17 +33,17 @@ public class AllEmployeesFragmentListItemAdapter extends BaseAdapter implements 
 
     @Override
     public int getCount() {
-        return employees.size();
+        return filteredEmployees.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return employees.get(position);
+        return filteredEmployees.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return employees.get(position).getId();
+        return filteredEmployees.get(position).getId();
     }
 
     @Override
@@ -80,33 +81,37 @@ public class AllEmployeesFragmentListItemAdapter extends BaseAdapter implements 
 
             FilterResults results = new FilterResults();
 
-            final List<Employee> list = employees;
+            if(filterString.length() > 0) {
+                final List<Employee> list = employees;
 
-            int count = list.size();
-            final ArrayList<Employee> nlist = new ArrayList<Employee>(count);
+                int count = list.size();
+                final ArrayList<Employee> nlist = new ArrayList<Employee>();
 
-            Employee filterableEmployee ;
+                Employee filteredEmployee;
 
-            for (int i = 0; i < count; i++) {
-                filterableEmployee = list.get(i);
-                if (filterableEmployee.getFullName().toLowerCase().contains(filterString)) {
-                    nlist.add(filterableEmployee);
+                for (int i = 0; i < count; i++) {
+                    filteredEmployee = list.get(i);
+                    if (filteredEmployee.getFullName().toLowerCase().contains(filterString)) {
+                        nlist.add(filteredEmployee);
+                    }
                 }
+
+                results.values = nlist;
+                results.count = nlist.size();
+            } else{
+                results.values = employees;
+                results.count = employees.size();
             }
-
-            results.values = nlist;
-            results.count = nlist.size();
-
             return results;
         }
 
         @SuppressWarnings("unchecked")
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            filteredEmployees = (ArrayList<Employee>) results.values;
+            filteredEmployees.clear();
+            filteredEmployees.addAll((Collection<? extends Employee>) results.values);
             notifyDataSetChanged();
         }
-
     }
 }
 
