@@ -63,6 +63,12 @@ public class Employee {
         return object.toString();
     }*/
 
+
+    @Override
+    public String toString() {
+        return getFullName();
+    }
+
     public enum EmployeeType{
         President, Director, Advisor, Responsible, Member, Person
     }
