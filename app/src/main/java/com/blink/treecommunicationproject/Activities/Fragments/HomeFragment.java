@@ -26,6 +26,7 @@ import com.blink.treecommunicationproject.Dialogs.EmployeeProfileActivity;
 import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
+import com.joooonho.SelectableRoundedImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class HomeFragment extends Fragment {
     private List<Employee> employees = new ArrayList<>();
     private List<Employee> tmpDisplayedEmployees = new ArrayList<>();
     private Employee tmpSelectedEmployee;
-
+    private SelectableRoundedImageView ivRootEmployeeImage;
 
     public HomeFragment(){}
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +57,17 @@ public class HomeFragment extends Fragment {
 
     private void initialize(Employee employee) {
         grid = (GridView) rootView.findViewById(R.id.grid);
+
+        ivRootEmployeeImage = (SelectableRoundedImageView) rootView.findViewById(R.id.ivRootEmployeeImage);
+        ivRootEmployeeImage.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.container, new Home2Fragment())
+                        .commit();
+                return false;
+            }
+        });
 
         tvRootEmployeeName = (TextView) rootView.findViewById(R.id.tvRootEmployeeName);
         tvRootEmployeeType = (TextView) rootView.findViewById(R.id.tvRootEmployeeType);
