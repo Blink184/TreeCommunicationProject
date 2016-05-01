@@ -27,7 +27,7 @@
                 app:sriv_left_bottom_corner_radius="48dip"
                 app:sriv_right_bottom_corner_radius="16dip"
                 app:sriv_border_width="2dip"
-                app:sriv_border_color="#FF00FF00"
+                app:sriv_border_color="#000000"
                 app:sriv_oval="true" />
         </LinearLayout>
         <LinearLayout
@@ -42,6 +42,7 @@
                 android:maxLines="2"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
+                android:textStyle="bold"
                 android:gravity="left"
                 android:textSize="20sp">
             </TextView>
@@ -50,7 +51,7 @@
                 android:layout_width="fill_parent"
                 android:maxLines="2"
                 android:layout_height="wrap_content"
-                android:textColor="#FF00FF00"
+                android:textColor="@color/myTextPrimaryColor"
                 android:gravity="left"
                 android:textSize="16sp">
             </TextView>
@@ -90,5 +91,6 @@
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
         android:gravity="center"
+        android:background="@color/white"
         android:stretchMode="columnWidth" />
 </LinearLayout>

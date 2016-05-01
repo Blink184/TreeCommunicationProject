@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:padding="5dp"
-    android:background="@color/blue12"
+    android:background="@color/blue13"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="20dp"
+            android:textStyle="bold"
             android:padding="1dp"
             android:id="@+id/tvName"
             android:text="Name"/>

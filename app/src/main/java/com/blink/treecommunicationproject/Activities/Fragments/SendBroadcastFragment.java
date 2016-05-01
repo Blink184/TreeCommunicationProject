@@ -56,8 +56,10 @@ public class SendBroadcastFragment extends Fragment {
         mactvToEmployee = (MultiAutoCompleteTextView) rootView.findViewById(R.id.mactvToEmployee);
 
         if (selectedEmployees != null) {
+            String tmp = "";
             for(Employee e : selectedEmployees){
-                mactvToEmployee.setText(e.getFullName());
+                mactvToEmployee.setText(mactvToEmployee.getText() + tmp + e.getFullName());
+                tmp = ", ";
             }
         } else {
             fillFakeData();

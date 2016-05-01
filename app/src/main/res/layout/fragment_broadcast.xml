@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     tools:context="com.blink.treecommunicationproject.Activities.Fragments.AssignNewTaskFragment"
     android:orientation="vertical"
-    android:background="@color/Color_49">
+    android:background="@color/kinda_Gray">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,6 +16,7 @@
             android:layout_height="match_parent"
             android:text="@string/send_broadcast"
             android:textSize="@dimen/task_font_size"
+            android:textColor="@color/black"
             android:textStyle="bold"/>
     </LinearLayout>
 
@@ -43,12 +44,14 @@
                         android:layout_height="wrap_content"
                         android:text="@string/to"
                         android:textStyle="bold"
+                        android:textColor="@color/black"
                         android:layout_weight="0.2" />
 
                     <MultiAutoCompleteTextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.8"
+                        android:textColor="@color/black"
                         android:id="@+id/mactvToEmployee" />
                 </LinearLayout>
 
@@ -63,6 +66,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/message"
+                    android:textColor="@color/black"
                     android:textStyle="bold"/>
             </LinearLayout>
 
@@ -75,9 +79,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="true"
+                    android:layout_margin="10dp"
                     android:gravity="top"
+                    android:background="@color/kinda_lessLessWhite"
                     android:id="@+id/etDescription"
                     android:inputType="text"
+                    android:textColor="@color/black"
                     android:editable="true" />
 
             </LinearLayout>

@@ -20,16 +20,17 @@
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
 
+    <color name="bg_itemEmp">#8181F7</color>
     <color name="bg_login">#26ae90</color>
     <color name="bg_register">#2e3237</color>
-    <color name="bg_main">#428bca</color>
+    <color name="bg_main">#0FA1D3</color>
     <color name="black">#ff000000</color>
 
-<!--I have a sense of humor-->
+<!--I have a sense of humor-  d8d8d8-->
     <color name="kinda_White">#fafafa</color>
     <color name="kinda_lessWhite">#f2f2f2</color>
     <color name="kinda_lessLessWhite">#e6e6e6</color>
-    <color name="kinda_Gray">#d8d8d8</color>
+    <color name="kinda_Gray">#ffffff</color>
     <color name="kinda_moreGray">#bdbdbd</color>
     <color name="kinda_moreMoreGray">#a4a4a4</color>
     <color name="kinda_moreMoreMoreGray">#848484</color>

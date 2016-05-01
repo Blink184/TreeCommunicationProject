@@ -7,20 +7,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/almost_Gray"
+        android:background="@color/kinda_Gray"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:orientation="horizontal"
-            android:background="@color/Color_48"
+            android:background="@color/bg_main"
             android:layout_weight="10">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center_vertical"
-                android:background="@color/Color_48"
+                android:background="@color/bg_main"
                 android:layout_weight="10"
                 android:layout_marginLeft="10dp">
                 <TextView
@@ -36,7 +36,7 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="fill_parent"
-            android:background="@color/almost_Gray"
+            android:background="@color/kinda_Gray"
             android:orientation="horizontal"
             android:layout_height="fill_parent"
             android:layout_weight="1">
