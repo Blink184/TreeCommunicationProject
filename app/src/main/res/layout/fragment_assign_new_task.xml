@@ -80,7 +80,9 @@
                     android:layout_height="match_parent"
                     android:enabled="true"
                     android:gravity="top"
-                    android:inputType="text"
+                    android:background="@color/kinda_lessLessWhite"
+                    android:layout_margin="10dp"
+                    android:inputType="textMultiLine"
                     android:id="@+id/etDescription"
                     android:editable="true"
                     android:textColor="@color/black"/>
@@ -121,7 +123,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_weight="1"
-            android:gravity="right|bottom">
+            android:gravity="right|bottom"
+            android:layout_margin="10dp">
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
