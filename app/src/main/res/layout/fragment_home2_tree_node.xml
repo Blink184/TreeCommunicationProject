@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:id="@+id/ll"
+    android:padding="5dp"
+    android:background="@android:color/darker_gray"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="→"
+        android:textColor="@color/black"
+        android:id="@+id/tvArrow"/>
+    <com.joooonho.SelectableRoundedImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ivRootEmployeeImage"
+        android:src="@drawable/person"
+        android:scaleType="centerCrop"
+        app:sriv_left_top_corner_radius="16dip"
+        app:sriv_right_top_corner_radius="0dip"
+        app:sriv_left_bottom_corner_radius="48dip"
+        app:sriv_right_bottom_corner_radius="16dip"
+        app:sriv_border_width="2dip"
+        app:sriv_border_color="@color/blue01"
+        app:sriv_oval="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_weight="6">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dsa"
+                android:textColor="@color/black"
+                android:id="@+id/tvName"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/almost_Gray"
+                android:text="dsa"
+                android:id="@+id/tvType"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                android:src="@drawable/ic_send_white_"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+

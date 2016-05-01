@@ -80,6 +80,14 @@ public class HomeFragment extends Fragment {
         else {
             ibBack.setVisibility(View.GONE);
             ibBroadcast.setVisibility(View.VISIBLE);
+            ibBroadcast.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.container, new SendBroadcastFragment(employees))
+                            .commit();
+                }
+            });
         }
 
 
