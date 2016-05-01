@@ -76,9 +76,11 @@
                 android:orientation="horizontal"
                 android:layout_weight="1">
                 <EditText
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:enabled="true"
+                    android:background="@color/kinda_lessLessWhite"
                     android:gravity="top"
                     android:id="@+id/etDescription"
                     android:inputType="text"

@@ -91,5 +91,6 @@
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
         android:gravity="center"
+        android:background="@color/white"
         android:stretchMode="columnWidth" />
 </LinearLayout>
