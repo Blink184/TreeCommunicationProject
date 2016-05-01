@@ -1,14 +1,20 @@
 package com.blink.treecommunicationproject.Activities.Adapters.Holders;
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.hardware.camera2.params.StreamConfigurationMap;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.blink.treecommunicationproject.Activities.Fragments.SendMessageFragment;
+import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.R;
 import com.unnamed.b.atv.model.TreeNode;
 
@@ -19,21 +25,32 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
     private TextView tvName;
     private TextView tvType;
     private TextView tvArrow;
+    private ImageButton ibSendMessage;
 
     public EmployeeItem(Context context) {
         super(context);
     }
 
     @Override
-    public View createNodeView(final TreeNode node, EmployeeTreeItem value) {
+    public View createNodeView(final TreeNode node, final EmployeeTreeItem value) {
         final LayoutInflater inflater = LayoutInflater.from(context);
         final View view = inflater.inflate(R.layout.fragment_home2_tree_node, null, false);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         tvName = (TextView) view.findViewById(R.id.tvName);
         tvType = (TextView) view.findViewById(R.id.tvType);
         tvArrow = (TextView) view.findViewById(R.id.tvArrow);
+        ibSendMessage = (ImageButton) view.findViewById(R.id.ibSendMessage);
         tvName.setText(value.name);
         tvType.setText(value.type);
+
+        ibSendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Activity)context).getFragmentManager().beginTransaction()
+                        .replace(R.id.container, new SendMessageFragment(new Employee(0, value.name, "", "", Employee.EmployeeType.Advisor)))
+                        .commit();
+            }
+        });
 
         if(node.getChildren().size() == 0){
             tvArrow.setVisibility(View.INVISIBLE);

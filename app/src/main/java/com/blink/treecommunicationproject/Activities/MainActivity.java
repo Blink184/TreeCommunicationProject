@@ -83,4 +83,13 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
     public void onNavigationDrawerItemSelected(int position) {
         navigateTo(position);
     }
+
+    @Override
+    public void onBackPressed() {
+        if(mNavigationDrawerFragment.getCurrentSelectedPosition() == 0){
+            super.onBackPressed();
+        }else{
+            mNavigationDrawerFragment.selectItem(0);
+        }
+    }
 }
