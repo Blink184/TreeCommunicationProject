@@ -20,9 +20,10 @@
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
 
+    <color name="bg_itemEmp">#8181F7</color>
     <color name="bg_login">#26ae90</color>
     <color name="bg_register">#2e3237</color>
-    <color name="bg_main">#428bca</color>
+    <color name="bg_main">#0FA1D3</color>
     <color name="black">#ff000000</color>
 
 <!--I have a sense of humor-->
