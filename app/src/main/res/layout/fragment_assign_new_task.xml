@@ -82,7 +82,7 @@
                     android:gravity="top"
                     android:background="@color/kinda_lessLessWhite"
                     android:layout_margin="10dp"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:id="@+id/etDescription"
                     android:editable="true"
                     android:textColor="@color/black"/>
