@@ -34,4 +34,5 @@ dependencies {
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.joooonho:selectableroundedimageview:1.0.1'
     compile 'com.github.bmelnychuk:atv:1.2.+'
+
 }

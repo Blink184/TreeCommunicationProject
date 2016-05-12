@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import com.blink.treecommunicationproject.Services.Global;
 import com.blink.treecommunicationproject.R;
+import com.blink.treecommunicationproject.Services.Preferences;
 import com.blink.treecommunicationproject.Web.Database.DatabaseMethods;
 
 /**
@@ -21,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private Button btnLogin;
     private EditText etUsername, etPassword;
-  //  private Preferences preferences;
+    private Preferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         });
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
-      //  preferences = new Preferences(getApplicationContext());
+        preferences = new Preferences(getApplicationContext());
       //  ProgressBar.set(findViewById(R.id.circle_loading_view));
     }
 
