@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ahmad hammoud on 4/12/2016.
+ * Created by aynur ajami on 4/12/2016.
  */
 public class Home2Fragment extends Fragment {
     private View rootView;

@@ -33,12 +33,12 @@ public class Employee {
     }
 
 
-    public Employee(int id, String username, String password, String firstName, String lastName, String phoneNumber, Bitmap picture, EmployeeType employeeType, Employee parentEmployee, List<Employee> childrenEmployees) {
+    public Employee(int id, String username, String password, String firstName, String lastName, String phoneNumber, /*Bitmap picture,*/ EmployeeType employeeType, Employee parentEmployee, List<Employee> childrenEmployees) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.picture = picture;
+//        this.picture = picture;
         this.employeeType = employeeType;
         this.parentEmployee = parentEmployee;
         this.childrenEmployees = childrenEmployees;
@@ -52,16 +52,16 @@ public class Employee {
     }
 
 
-
-    /*public String toJson() throws JSONException {
-
+    public String toJson() throws JSONException {
         JSONObject object = new JSONObject();
         object.put("id", id);
         object.put("firstName", firstName);
         object.put("lastName", lastName);
-        object.put("password", password);
+        object.put("phoneNumber", phoneNumber);
+        object.put("employeeType", employeeType.toString());
+        object.put("username", username);
         return object.toString();
-    }*/
+    }
 
 
     @Override
