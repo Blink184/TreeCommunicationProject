@@ -2,6 +2,8 @@ package com.blink.treecommunicationproject.Web;
 
 import android.os.AsyncTask;
 
+import com.blink.treecommunicationproject.Services.ProgressBar;
+
 import org.json.JSONException;
 
 import java.io.BufferedReader;
@@ -19,11 +21,14 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * Created by Ahmad on 10/7/2015.
+ * Created by Aynur on 5/23/2016.
  */
 public class Connection {
     public ConnectionTask performPostCall(String requestURL, HashMap<String, String> postDataParams, OnCallFinish finished) {
-        return new ConnectionTask(requestURL, postDataParams, finished);
+        return new ConnectionTask(requestURL, postDataParams, true, finished);
+    }
+    public ConnectionTask performPostCallWithoutProgressBar(String requestURL, HashMap<String, String> postDataParams, OnCallFinish finished) {
+        return new ConnectionTask(requestURL, postDataParams, false, finished);
     }
 
 
@@ -32,20 +37,20 @@ public class Connection {
         private String requestURL;
         private HashMap<String, String> postDataParams;
         private OnCallFinish finished;
-//        private boolean withProgressBar;
+        private boolean withProgressBar;
 
-        public ConnectionTask(String requestURL, HashMap<String, String> postDataParams, OnCallFinish finished){
+        public ConnectionTask(String requestURL, HashMap<String, String> postDataParams, boolean withProgressBar, OnCallFinish finished){
             this.requestURL = requestURL;
             this.postDataParams = postDataParams;
             this.finished = finished;
-//            this.withProgressBar = withProgressBar;
+            this.withProgressBar = withProgressBar;
         }
 
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-//            if(withProgressBar)ProgressBar.show();
+            if(withProgressBar) ProgressBar.show();
         }
 
         @Override
@@ -96,7 +101,7 @@ public class Connection {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-//            if(withProgressBar)ProgressBar.hide();
+            if(withProgressBar)ProgressBar.hide();
         }
 
         private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {

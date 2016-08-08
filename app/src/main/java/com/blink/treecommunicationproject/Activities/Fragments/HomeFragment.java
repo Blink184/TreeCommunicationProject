@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.blink.treecommunicationproject.Activities.Adapters.HomeFragmentGridItemAdapter;
 import com.blink.treecommunicationproject.Dialogs.EmployeeProfileActivity;
 import com.blink.treecommunicationproject.Objects.Employee;
+import com.blink.treecommunicationproject.Objects.User;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
 import com.joooonho.SelectableRoundedImageView;
@@ -50,12 +51,12 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
         fillFakeData();
-        Global.user.setChildrenEmployees(employees);
+        //Global.user.setChildrenEmployees(employees);
         initialize(Global.user);
         return rootView;
     }
 
-    private void initialize(Employee employee) {
+    private void initialize(User user) {
         grid = (GridView) rootView.findViewById(R.id.grid);
 
         ivRootEmployeeImage = (SelectableRoundedImageView) rootView.findViewById(R.id.ivRootEmployeeImage);
@@ -63,7 +64,7 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onLongClick(View v) {
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.container, new Home2Fragment())
+                        .replace(R.id.container, new HomeFragment())
                         .commit();
                 return false;
             }
@@ -74,11 +75,11 @@ public class HomeFragment extends Fragment {
         ibBack = (ImageButton) rootView.findViewById(R.id.ibBack);
         ibBroadcast = (ImageButton) rootView.findViewById(R.id.ibBroadcast);
 
-        loadEmployee(employee);
+        loadUser(user);
     }
 
-    private void loadEmployee(final Employee employee) {
-
+    private void loadUser(final User user) {
+/*
         if(employee.hasParentEmployee()) {
             ibBroadcast.setVisibility(View.GONE);
             ibBack.setVisibility(View.VISIBLE);
@@ -117,7 +118,7 @@ public class HomeFragment extends Fragment {
                 parent.showContextMenuForChild(view);
             }
         });
-        registerForContextMenu(grid);
+        registerForContextMenu(grid);*/
     }
 
     @Override
@@ -138,7 +139,7 @@ public class HomeFragment extends Fragment {
         if(item.getTitle().equals("View Profile")){
             viewProfile(tmpSelectedEmployee);
         }else if(item.getTitle().equals("View Employees")){
-            loadEmployee(tmpSelectedEmployee);
+            //loadEmployee(tmpSelectedEmployee);
         }else if(item.getTitle().equals("Assign a Task")){
             assignTask(tmpSelectedEmployee);
         }else if(item.getTitle().equals("Send a Message")){
@@ -170,6 +171,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void fillFakeData() {
+/*
 
         List<Employee> aynurChildren = new ArrayList<>();
         List<Employee> tmp = new ArrayList<>();
@@ -191,6 +193,7 @@ public class HomeFragment extends Fragment {
         employees.add(new Employee(1, "un", "pw", "Amy", "Lee", "70/122322", Employee.EmployeeType.Person, Global.user, tmp));
         employees.add(new Employee(1, "un", "pw", "Roy", "Fallon", "70/122322", Employee.EmployeeType.Advisor, Global.user, tmp));
         employees.add(new Employee(1, "un", "pw", "John", "Smith", "70/122322", Employee.EmployeeType.Person, Global.user, tmp));
+*/
 
     }
 }
