@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
             Fragment fragment = null;
             switch (position) {
                 case 0:
-                    fragment = new Home2Fragment();
+                    fragment = new HomeFragment();
                     break;
                 case 1:
                     fragment = new TaskFragment();

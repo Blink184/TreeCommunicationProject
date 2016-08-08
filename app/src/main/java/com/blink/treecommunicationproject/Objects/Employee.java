@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class Employee {
 
-
     private int id;
     private String firstName;
     private String lastName;
@@ -57,12 +56,24 @@ public class Employee {
         object.put("id", id);
         object.put("firstName", firstName);
         object.put("lastName", lastName);
-        object.put("phoneNumber", phoneNumber);
+        object.put("phone", phoneNumber);
         object.put("employeeType", employeeType.toString());
         object.put("username", username);
         return object.toString();
     }
 
+//    user.setUsername(etUsername.getText().toString());
+//    user.setPassword(etPassword.getText().toString());
+//    user.setFirstName(object.getString("firstName"));
+//    user.setLastName(object.getString("lastName"));
+//    user.setPhone(object.getString("phone"));
+//    user.setAddress(object.getString("address"));
+//    user.setEmail(object.getString("email"));
+//    user.setAdmin(object.getBoolean("isAdmin"));
+//    user.setBanned(object.getBoolean("isBanned"));
+//    user.setDeleted(object.getBoolean("isDeleted"));
+//    user.setImage((Bitmap) object.get("image"));
+//    user.setLoggedIn(object.getBoolean("isLoggedIn"));
 
     @Override
     public String toString() {
