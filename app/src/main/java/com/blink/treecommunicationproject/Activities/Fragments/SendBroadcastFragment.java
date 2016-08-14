@@ -74,18 +74,18 @@ public class SendBroadcastFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Your broadcast has been sent", Toast.LENGTH_SHORT).show();
 
-                Fragment fragment = new Home2Fragment();
-                FragmentManager fragmentManager = getActivity().getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+//                Fragment fragment = new Home2Fragment();
+//                FragmentManager fragmentManager = getActivity().getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.container, fragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
             }
         });
     }
 
     private void fillFakeData() {
-
+/*
         List<Employee> tmp = new ArrayList<>();
         employees.add(new Employee(1, "un", "pw", "Aynur", "Ajami", "70/122322", Employee.EmployeeType.President, Global.user, tmp));
         employees.add(new Employee(1, "un", "pw", "Jared", "Leto", "70/122322", Employee.EmployeeType.Advisor, Global.user, tmp));
@@ -97,7 +97,7 @@ public class SendBroadcastFragment extends Fragment {
         employees.add(new Employee(1, "un", "pw", "Lara", "Croft", "70/122322", Employee.EmployeeType.Responsible, Global.user, tmp));
         employees.add(new Employee(1, "un", "pw", "Amy", "Lee", "70/122322", Employee.EmployeeType.Person, Global.user, tmp));
         employees.add(new Employee(1, "un", "pw", "Roy", "Fallon", "70/122322", Employee.EmployeeType.Advisor, Global.user, tmp));
-        employees.add(new Employee(1, "un", "pw", "John", "Smith", "70/122322", Employee.EmployeeType.Person, Global.user, tmp));
+        employees.add(new Employee(1, "un", "pw", "John", "Smith", "70/122322", Employee.EmployeeType.Person, Global.user, tmp));*/
 
     }
 }

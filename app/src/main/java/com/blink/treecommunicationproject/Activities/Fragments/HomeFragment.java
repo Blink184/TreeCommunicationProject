@@ -182,7 +182,6 @@ public class HomeFragment extends Fragment {
         aynurChildren.add(new Employee(1, "un", "pw", "Tyrion", "Lannister", "70/122322", Employee.EmployeeType.Advisor, aynur, tmp));
         aynurChildren.add(new Employee(1, "un", "pw", "Jaime", "Lannister", "70/122322", Employee.EmployeeType.Advisor, aynur, tmp));
 
-
         employees.add(aynur);
         employees.add(new Employee(1, "un", "pw", "Ahmad", "Hammoud", "70/122322", Employee.EmployeeType.Advisor, Global.user, tmp));
         employees.add(new Employee(1, "un", "pw", "Azzam", "Mourad", "70/122322", Employee.EmployeeType.Responsible, Global.user, tmp));

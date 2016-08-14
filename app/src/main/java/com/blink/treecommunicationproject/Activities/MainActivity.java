@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.blink.treecommunicationproject.Activities.Fragments.AllEmployeesFragment;
-import com.blink.treecommunicationproject.Activities.Fragments.Home2Fragment;
+//import com.blink.treecommunicationproject.Activities.Fragments.Home2Fragment;
 import com.blink.treecommunicationproject.Activities.Fragments.HomeFragment;
 import com.blink.treecommunicationproject.Activities.Fragments.SendBroadcastFragment;
 import com.blink.treecommunicationproject.Activities.Fragments.SendMessageFragment;

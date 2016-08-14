@@ -71,7 +71,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         ImageView iv = (ImageView) view.findViewById(R.id.imgAvatar);
 
         txtUsername.setText(Global.user.getFullName());
-        txtPhone.setText(Global.user.getPhoneNumber());
+        txtPhone.setText(Global.user.getPhone());
 
         Bitmap src;
         /*if(Global.profilePicture != null)

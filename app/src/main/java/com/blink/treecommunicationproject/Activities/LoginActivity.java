@@ -55,12 +55,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login() {
-//        Global.user = DatabaseMethods.getEmployee(etUsername.getText().toString(), etPassword.getText().toString());
-//        goToMainPage();
-//        HashMap<String, String> params = new HashMap<>();
-//        params.put("username", etUsername.getText().toString());
-//        params.put("password", etPassword.getText().toString());
-
         HashMap<String, String> params = new HashMap<>();
         params.put("username", etUsername.getText().toString());
         params.put("password", etPassword.getText().toString());
