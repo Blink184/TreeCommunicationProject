@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Traffic Management</string>
+    <string name="app_name">Tree Communication</string>
 
     <string name="drawer_open">Menu opened</string>
     <string name="drawer_close">Menu closed</string>

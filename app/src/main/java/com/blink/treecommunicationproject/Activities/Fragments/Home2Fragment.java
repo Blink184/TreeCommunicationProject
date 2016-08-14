@@ -1,3 +1,4 @@
+/*
 package com.blink.treecommunicationproject.Activities.Fragments;
 
 import android.app.Fragment;
@@ -30,9 +31,11 @@ import com.unnamed.b.atv.view.AndroidTreeView;
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * Created by aynur ajami on 4/12/2016.
- */
+ *//*
+
 public class Home2Fragment extends Fragment {
     private View rootView;
     private List<Employee> employees = new ArrayList<>();
@@ -151,3 +154,4 @@ public class Home2Fragment extends Fragment {
 
     }
 }
+*/

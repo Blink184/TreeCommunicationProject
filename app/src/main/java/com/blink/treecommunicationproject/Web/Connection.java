@@ -25,7 +25,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class Connection {
     public ConnectionTask performPostCall(String requestURL, HashMap<String, String> postDataParams, OnCallFinish finished) {
-        return new ConnectionTask(requestURL, postDataParams, true, finished);
+        return new ConnectionTask(requestURL, postDataParams, false, finished);
     }
     public ConnectionTask performPostCallWithoutProgressBar(String requestURL, HashMap<String, String> postDataParams, OnCallFinish finished) {
         return new ConnectionTask(requestURL, postDataParams, false, finished);
@@ -50,7 +50,7 @@ public class Connection {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            if(withProgressBar) ProgressBar.show();
+            //if(withProgressBar) ProgressBar.show();
         }
 
         @Override
@@ -84,7 +84,7 @@ public class Connection {
                     }
                 }
                 else {
-                    response="";
+                    response="empty";
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -101,7 +101,7 @@ public class Connection {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            if(withProgressBar)ProgressBar.hide();
+            //if(withProgressBar)ProgressBar.hide();
         }
 
         private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
