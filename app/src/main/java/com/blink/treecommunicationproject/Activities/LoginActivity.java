@@ -11,8 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.blink.treecommunicationproject.Objects.Employee;
+import com.blink.treecommunicationproject.Objects.Role;
 import com.blink.treecommunicationproject.Objects.User;
+import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.Services.Global;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Preferences;
@@ -22,8 +23,12 @@ import com.blink.treecommunicationproject.Web.DatabaseMethods;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 /**
  * Created by Aynur on 4/10/2016
@@ -55,47 +60,67 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login() {
-        HashMap<String, String> params = new HashMap<>();
-        params.put("username", etUsername.getText().toString());
-        params.put("password", etPassword.getText().toString());
-        DatabaseMethods.validateUser(params, new Connection.OnCallFinish() {
-            @Override
-            public void processFinish(String output) throws JSONException {
-                JSONObject object = new JSONObject(output);
-                if(object.getString("s").equals("1")) {
-                    User user = new User();
-                    user.setUsername(etUsername.getText().toString());
-                    user.setPassword(etPassword.getText().toString());
-                    user.setFirstName(object.getString("firstName"));
-                    user.setLastName(object.getString("lastName"));
-                    user.setPhone(object.getString("phone"));
-                    user.setAddress(object.getString("address"));
-                    user.setEmail(object.getString("email"));
-                    user.setLastActiveDate((Date) object.get("isLoggedIn"));
-                    user.setAdmin(object.getBoolean("isAdmin"));
-                    user.setBanned(object.getBoolean("isBanned"));
-                    user.setDeleted(object.getBoolean("isDeleted"));
+            HashMap<String, String> params = new HashMap<>();
+            params.put("username", etUsername.getText().toString());
+            params.put("password", etPassword.getText().toString());
+            DatabaseMethods.validateUser(params, new Connection.OnCallFinish() {
+                @Override
+                public void processFinish(String output) throws JSONException {
+                    JSONObject result = new JSONObject(output);
+                    if (result.getString("s").equals("1")) {
+                        JSONObject object = (result.getJSONObject("i"));
+                        User user = new User();
+                        user.setUsername(etUsername.getText().toString());
+                        user.setPassword(etPassword.getText().toString());
+                        user.setFirstName(object.getString("FirstName"));
+                        user.setLastName(object.getString("LastName"));
+                        user.setPhone(object.getString("Phone"));
+                        user.setAddress(object.getString("Address"));
+                        user.setEmail(object.getString("Email"));
+                        user.setLastActiveDate(stringToDate(object.getString("LastActiveDate")));
+                        user.setAdmin(intToBool(object.getInt("IsAdmin")));
+                        user.setBanned(intToBool(object.getInt("IsBanned")));
+                        user.setDeleted(intToBool(object.getInt("IsDeleted")));
 //                    user.setImage((Bitmap) object.get("image"));
-                    user.setLoggedIn(object.getBoolean("isLoggedIn"));
-                    if (user.isBanned()) {
-                        userIsBannedToast();
-                    } else if (user.isDeleted()) {
-                        userDoesNotExistToast();
-                    } else if (user.isLoggedIn()) {
-                        userIsAlreadyLoggedIn();
+                        user.setLoggedIn(intToBool(object.getInt("IsLoggedIn")));
+                        Role role = new Role();
+                        role.setMaster(intToBool(object.getInt("IsMaster")));
+                        UserRole userRole = new UserRole();
+                        userRole.setId(object.getInt("UserRoleId"));
+                        userRole.setUser(user);
+                        userRole.setRole(role);
+                        if (user.isBanned()) {
+                            userIsBannedToast();
+                        } else if (user.isDeleted()) {
+                            userDoesNotExistToast();
+                        } else if (user.isLoggedIn()) {
+                            userIsAlreadyLoggedIn();
+                        } else {
+                            Global.userRole = userRole;
+                            preferences.putString(Preferences.USER, user.toJson());
+                            preferences.putBoolean(Preferences.ISLOGGEDIN, true);
+                            goToMainPage();
+                        }
                     } else {
-                        Global.user = user;
-                        preferences.putString(Preferences.USER, user.toJson());
-                        preferences.putBoolean(Preferences.ISLOGGEDIN, true);
-                        goToMainPage();
+                        Toast.makeText(getApplicationContext(), "Wrong Username or Password.", Toast.LENGTH_LONG).show();
                     }
                 }
-                else{
+            }).execute();
+    }
 
-                    Toast.makeText(getApplicationContext(), "Wrong Phone or Password.", Toast.LENGTH_LONG).show();
-                }
-            }
-        }).execute();
+    private boolean intToBool(int i) {
+        return i == 1;
+    }
+
+    private Date stringToDate(String s) {
+        Date date = new Date();
+        try {
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+            date = format.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 
     private void userIsBannedToast() {

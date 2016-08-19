@@ -25,6 +25,7 @@ import com.blink.treecommunicationproject.Activities.Adapters.HomeFragmentGridIt
 import com.blink.treecommunicationproject.Dialogs.EmployeeProfileActivity;
 import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.Objects.User;
+import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
 import com.joooonho.SelectableRoundedImageView;
@@ -52,11 +53,11 @@ public class HomeFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
         fillFakeData();
         //Global.user.setChildrenEmployees(employees);
-        initialize(Global.user);
+        initialize(Global.userRole);
         return rootView;
     }
 
-    private void initialize(User user) {
+    private void initialize(UserRole userRole) {
         grid = (GridView) rootView.findViewById(R.id.grid);
 
         ivRootEmployeeImage = (SelectableRoundedImageView) rootView.findViewById(R.id.ivRootEmployeeImage);
@@ -75,10 +76,10 @@ public class HomeFragment extends Fragment {
         ibBack = (ImageButton) rootView.findViewById(R.id.ibBack);
         ibBroadcast = (ImageButton) rootView.findViewById(R.id.ibBroadcast);
 
-        loadUser(user);
+        loadUser(userRole);
     }
 
-    private void loadUser(final User user) {
+    private void loadUser(final UserRole user) {
 /*
         if(employee.hasParentEmployee()) {
             ibBroadcast.setVisibility(View.GONE);
