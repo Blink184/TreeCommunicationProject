@@ -1,30 +1,20 @@
 package com.blink.treecommunicationproject.Activities.Fragments;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.opengl.Visibility;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.blink.treecommunicationproject.Activities.Adapters.HomeFragmentGridItemAdapter;
 import com.blink.treecommunicationproject.Dialogs.EmployeeProfileActivity;
 import com.blink.treecommunicationproject.Objects.Employee;
-import com.blink.treecommunicationproject.Objects.User;
 import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
@@ -36,7 +26,7 @@ import java.util.List;
 /**
  * Created by ahmad hammoud on 4/12/2016.
  */
-public class HomeFragment extends Fragment {
+public class EmployeesOldFragment extends Fragment {
     private GridView grid;
     private View rootView;
     private TextView tvRootEmployeeName;
@@ -48,7 +38,7 @@ public class HomeFragment extends Fragment {
     private Employee tmpSelectedEmployee;
     private SelectableRoundedImageView ivRootEmployeeImage;
 
-    public HomeFragment(){}
+    public EmployeesOldFragment(){}
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
         fillFakeData();
@@ -65,7 +55,7 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onLongClick(View v) {
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.container, new HomeFragment())
+                        .replace(R.id.container, new EmployeesOldFragment())
                         .commit();
                 return false;
             }

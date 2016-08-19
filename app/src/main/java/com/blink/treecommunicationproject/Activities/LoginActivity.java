@@ -85,8 +85,10 @@ public class LoginActivity extends AppCompatActivity {
                         user.setLoggedIn(intToBool(object.getInt("IsLoggedIn")));
                         Role role = new Role();
                         role.setMaster(intToBool(object.getInt("IsMaster")));
+                        role.setDesription(object.getString("Role"));
                         UserRole userRole = new UserRole();
                         userRole.setId(object.getInt("UserRoleId"));
+                        userRole.setJobTitle(object.getString("Title"));
                         userRole.setUser(user);
                         userRole.setRole(role);
                         if (user.isBanned()) {

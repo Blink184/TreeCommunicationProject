@@ -41,7 +41,7 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
         tvArrow = (TextView) view.findViewById(R.id.tvArrow);
         ibSendMessage = (ImageButton) view.findViewById(R.id.ibSendMessage);
         tvName.setText(value.name);
-        tvType.setText(value.type);
+        tvType.setText(value.role);
 
         ibSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,12 +95,14 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
     }
 
     public static class EmployeeTreeItem {
+        public int userRoleId;
         public String name;
-        public String type;
+        public String role;
 
-        public EmployeeTreeItem(String name, String type) {
+        public EmployeeTreeItem(int userRoleId, String name, String role) {
+            this.userRoleId= userRoleId;
             this.name = name;
-            this.type = type;
+            this.role = role;
         }
     }
 }
