@@ -45,7 +45,7 @@ public class SendBroadcastFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.fragment_broadcast, container, false);
+        rootView = inflater.inflate(R.layout.fragment_broadcast_old, container, false);
         initialize();
         return rootView;
 
@@ -74,7 +74,7 @@ public class SendBroadcastFragment extends Fragment {
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "Your broadcast has been sent", Toast.LENGTH_SHORT).show();
 
-//                Fragment fragment = new Home2Fragment();
+//                Fragment fragment = new EmployeesFragment();
 //                FragmentManager fragmentManager = getActivity().getFragmentManager();
 //                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 //                fragmentTransaction.replace(R.id.container, fragment);

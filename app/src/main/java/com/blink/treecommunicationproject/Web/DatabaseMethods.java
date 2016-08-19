@@ -16,6 +16,11 @@ public class DatabaseMethods {
     public static Connection.ConnectionTask validateUser(HashMap<String, String> postDataParams, Connection.OnCallFinish finished) {
         return new Connection().performPostCall(VALIDATEUSER, postDataParams, finished);
     }
+    public static Connection.ConnectionTask getTree(int userRoleId, Connection.OnCallFinish finished) {
+        HashMap<String, String> postDataParams = new HashMap<>();
+        postDataParams.put("parentid", String.valueOf(userRoleId));
+        return new Connection().performPostCall(GETTREE, postDataParams, finished);
+    }
 
 //    public static Connection.ConnectionTask getUser(HashMap<String, String> postDataParams, Connection.OnCallFinish finished) {
 //        return new Connection().performPostCall(GETUSER, postDataParams, finished);
