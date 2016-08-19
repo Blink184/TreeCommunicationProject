@@ -37,6 +37,7 @@ public class TaskFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_task, container, false);
 
+
         /*tasks.add(new Task(0, Global.user, new Employee(0, "Susan", "J. Mordigan", "03555666", Employee.EmployeeType.Advisor), new Date(), "Meeting at 13:00."));
         tasks.add(new Task(1, Global.user, new Employee(0, "Jack", "Black", "78959565", Employee.EmployeeType.Responsible), new Date(), "Print the documents for Steve."));
         tasks.add(new Task(2, Global.user, new Employee(0, "Elie", "Nassar", "70112547", Employee.EmployeeType.Responsible), new Date(), "Send the documents"));
