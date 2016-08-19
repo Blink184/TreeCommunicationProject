@@ -1,10 +1,10 @@
 package com.blink.treecommunicationproject.Services;
 
-import com.blink.treecommunicationproject.Objects.User;
+import com.blink.treecommunicationproject.Objects.UserRole;
 
 /**
  * Created by Ahmad on 10/8/2015.
  */
 public class Global {
-    public static User user;
+    public static UserRole userRole;
 }

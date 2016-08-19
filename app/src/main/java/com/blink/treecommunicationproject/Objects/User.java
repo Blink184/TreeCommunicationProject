@@ -61,35 +61,22 @@ public class User {
 
     public String toJson() throws JSONException {
         JSONObject object = new JSONObject();
-        object.put("id", id);
-        object.put("username", username);
-        object.put("password", password);
-        object.put("firstName", firstName);
-        object.put("lastName", lastName);
-        object.put("phone", phone);
-        object.put("address", address);
-        object.put("email", email);
-        object.put("lastActiveDate", lastActiveDate);
-        object.put("isAdmin", isAdmin);
-        object.put("isBanned", isBanned);
-        object.put("isDeleted", isDeleted);
+        object.put("Id", id);
+        object.put("Username", username);
+        object.put("Password", password);
+        object.put("FirstName", firstName);
+        object.put("LastName", lastName);
+        object.put("Phone", phone);
+        object.put("Address", address);
+        object.put("Email", email);
+        object.put("LastActiveDate", lastActiveDate);
+        object.put("IsAdmin", isAdmin);
+        object.put("IsBanned", isBanned);
+        object.put("IsDeleted", isDeleted);
 //        object.put("image", image);
         return object.toString();
     }
 
-//    user.setUsername(etUsername.getText().toString());
-//    user.setPassword(etPassword.getText().toString());
-//    user.setFirstName(object.getString("firstName"));
-//    user.setLastName(object.getString("lastName"));
-//    user.setPhone(object.getString("phone"));
-    //lastActiveDate
-//    user.setAddress(object.getString("address"));
-//    user.setEmail(object.getString("email"));
-//    user.setAdmin(object.getBoolean("isAdmin"));
-//    user.setBanned(object.getBoolean("isBanned"));
-//    user.setDeleted(object.getBoolean("isDeleted"));
-//    user.setImage((Bitmap) object.get("image"));
-//    user.setLoggedIn(object.getBoolean("isLoggedIn"));
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;

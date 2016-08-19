@@ -13,7 +13,7 @@
     <color name="input_login_hint">#999999</color>
     <color name="input_register_bg">#3b4148</color>
 
-    <color name="bg_main">#0FA1D3</color>
+    <!--<color name="bg_main">#0FA1D3</color>-->
     <color name="black">#ff000000</color>
 
 <!--I have a sense of humor-  d8d8d8-->
@@ -27,5 +27,11 @@
     <color name="blue13">#C5EAF8</color>
 
     <color name="green10">#B6DB49</color>
+
+
+    <color name="blueBtnWeb">#a1bfcd</color>
+    <color name="bg_main">#354658</color>
+    <color name="titleWeb">#a3c0ce</color>
+    <color name="tabsWeb">#0a0f1d</color>
 
 </resources>

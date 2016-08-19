@@ -8,7 +8,6 @@ public class UserRole {
     private int id;
     private Role role;
     private User user;
-    private String username;
     private String jobTitle;
     private boolean isDeleted;
 
@@ -19,7 +18,6 @@ public class UserRole {
         this.id = id;
         this.role = role;
         this.user = user;
-        this.username = username;
         this.jobTitle = jobTitle;
         this.isDeleted = isDeleted;
     }
@@ -46,14 +44,6 @@ public class UserRole {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getJobTitle() {
