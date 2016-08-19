@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="100dp">
+        android:layout_height="140dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,13 +12,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:background="@color/input_register_bg"
+            android:background="@color/titleWeb"
             android:layout_height="wrap_content">
             <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:layout_weight="10">
+                android:layout_weight="3">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -26,36 +27,95 @@
                     android:textStyle="bold"
                     android:padding="5dp"
                     android:text="Aynur Ajami"
-                    android:id="@+id/tvTo" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/cb_done"
-                    android:enabled="false"
-                    android:checked="false"
-                    android:id="@+id/cbDone"
-                    android:layout_margin="5dp" />
+                    android:id="@+id/tvTo"
+                    android:layout_weight="3" />
 
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accept"
+                    android:paddingRight="5dp"
+                    android:id="@+id/cbProgress" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
-            android:background="@color/kinda_Gray"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:layout_height="match_parent">
 
-            <TextView
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@color/black"
-                android:padding="5dp"
-                android:text="lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
-                android:id="@+id/tvDescription" />
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:padding="5dp"
+                        android:text="this is a title"
+                        android:id="@+id/tvTitle" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:textColor="@color/black"
+                        android:padding="5dp"
+                        android:scrollbars="vertical"
+                        android:text="  lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
+                        android:id="@+id/tvDescription"
+                        android:textIsSelectable="true" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:background="@color/kinda_Gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:padding="5dp"
+                            android:textColor="@color/black"
+                            android:text="Start Date:"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:padding="5dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:textColor="@color/orangeWeb"
+                            android:text="12/12/12"
+                            android:id="@+id/tvStartDate"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/black"
+                            android:padding="5dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:text="Due Date:"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textColor="@color/orangeWeb"
+                            android:padding="5dp"
+                            android:layout_weight="4"
+                            android:text="12/12/12"
+                            android:id="@+id/tvDueDate"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

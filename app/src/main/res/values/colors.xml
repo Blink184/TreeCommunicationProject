@@ -33,5 +33,6 @@
     <color name="bg_main">#354658</color>
     <color name="titleWeb">#a3c0ce</color>
     <color name="tabsWeb">#0a0f1d</color>
+    <color name="orangeWeb">#F49A43</color>
 
 </resources>
