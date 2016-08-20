@@ -1,3 +1,4 @@
+/*
 package com.blink.treecommunicationproject.Activities.Adapters;
 
 import android.content.Context;
@@ -13,9 +14,11 @@ import com.blink.treecommunicationproject.R;
 
 import java.util.ArrayList;
 
+*/
 /**
  * Created by Kirby on 4/14/2016.
- */
+ *//*
+
 public class ToDoTaskFragmentListItemAdapter extends BaseAdapter {
 
     private Context mContext;
@@ -43,7 +46,8 @@ public class ToDoTaskFragmentListItemAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View list;
+*/
+/*        View list;
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -62,7 +66,9 @@ public class ToDoTaskFragmentListItemAdapter extends BaseAdapter {
             list = (View) convertView;
         }
 
-        return list;
+        return list;*//*
+
 
     }
 }
+*/

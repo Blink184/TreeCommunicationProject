@@ -22,6 +22,12 @@ public class DatabaseMethods {
         return new Connection().performPostCall(GETTREE, postDataParams, finished);
     }
 
+    public static Connection.ConnectionTask getTasks(int userRoleId, int limit, Connection.OnCallFinish finished) {
+        HashMap<String, String> postDataParams = new HashMap<>();
+        postDataParams.put("userroleid", String.valueOf(userRoleId));
+        postDataParams.put("limit", String.valueOf(limit));
+        return new Connection().performPostCall(GETTASKS, postDataParams, finished);
+    }
 //    public static Connection.ConnectionTask getUser(HashMap<String, String> postDataParams, Connection.OnCallFinish finished) {
 //        return new Connection().performPostCall(GETUSER, postDataParams, finished);
 //    }

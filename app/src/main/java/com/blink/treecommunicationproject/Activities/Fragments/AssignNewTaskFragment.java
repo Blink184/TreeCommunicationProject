@@ -34,12 +34,16 @@ public class AssignNewTaskFragment extends Fragment {
     private ImageButton send;
     private AutoCompleteTextView actvToEmployee;
     private Employee selectedEmployee;
+    private boolean isDelegated;
 
     @SuppressLint("ValidFragment")
     public AssignNewTaskFragment(Employee selectedEmployee) {
         this.selectedEmployee = selectedEmployee;
     }
-    public AssignNewTaskFragment() {
+    public AssignNewTaskFragment(boolean isDelegated) {
+
+    }
+    public AssignNewTaskFragment () {
 
     }
 
@@ -48,10 +52,10 @@ public class AssignNewTaskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_assign_new_task, container, false);
 
-        toEmployees.add(new Employee(0, "Susan", "J. Mordigan", "03555666", Employee.EmployeeType.Advisor));
-        toEmployees.add(new Employee(0, "Jack", "Black", "78959565", Employee.EmployeeType.Responsible));
-        toEmployees.add(new Employee(0, "Elie", "Nassar", "70112547", Employee.EmployeeType.Responsible));
-        toEmployees.add(new Employee(0, "John", "Blue", "81235689", Employee.EmployeeType.Director));
+//        toEmployees.add(new Employee(0, "Susan", "J. Mordigan", "03555666", Employee.EmployeeType.Advisor));
+//        toEmployees.add(new Employee(0, "Jack", "Black", "78959565", Employee.EmployeeType.Responsible));
+//        toEmployees.add(new Employee(0, "Elie", "Nassar", "70112547", Employee.EmployeeType.Responsible));
+//        toEmployees.add(new Employee(0, "John", "Blue", "81235689", Employee.EmployeeType.Director));
 
         initialize();
         return rootView;

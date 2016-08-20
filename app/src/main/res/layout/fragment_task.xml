@@ -62,7 +62,7 @@ android:layout_height="fill_parent">
         android:layout_height="wrap_content"
         android:background="@color/tabsWeb">
         <Button
-            android:id="@+id/myTasks"
+            android:id="@+id/btnMyTasks"
             android:text="My Tasks"
             android:textAlignment="center"
             android:background="@color/tabsWeb"
@@ -72,7 +72,7 @@ android:layout_height="fill_parent">
             android:padding="5dp"
             />
         <Button
-            android:id="@+id/receivedRequests"
+            android:id="@+id/btnReceivedRequests"
             android:textAlignment="center"
             android:padding="5dp"
             android:layout_weight="3"
@@ -82,7 +82,7 @@ android:layout_height="fill_parent">
             android:layout_height="wrap_content"
             />
         <Button
-            android:id="@+id/sentRequests"
+            android:id="@+id/btnSentRequests"
             android:layout_weight="3"
             android:padding="5dp"
             android:textAlignment="center"

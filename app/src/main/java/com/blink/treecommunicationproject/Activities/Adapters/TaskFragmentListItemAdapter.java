@@ -55,11 +55,28 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
             list = inflater.inflate(R.layout.fragment_task_list_item, parent, false);
 
             TextView to = (TextView) list.findViewById(R.id.tvTo);
+            TextView title = (TextView) list.findViewById(R.id.tvTitle);
             TextView description = (TextView) list.findViewById(R.id.tvDescription);
-            CheckBox checkBoxDone = (CheckBox) list.findViewById(R.id.cbDone);
-            checkBoxDone.setChecked(false);
-            to.setText(tasks.get(position).getToEmployee().getFullName());
-            description.setText(tasks.get(position).getDescription());
+            TextView startDate = (TextView) list.findViewById(R.id.tvStartDate);
+            TextView dueDate = (TextView) list.findViewById(R.id.tvDueDate);
+
+            to.setText(tasks.get(position).getToUserRole());
+            title.setText(tasks.get(position).getTitle());
+            description.setText(tasks.get(position).getContent().toString());
+            startDate.setText(tasks.get(position).getStartDate().toString());
+            dueDate.setText(tasks.get(position).getDueDate().toString());
+
+            CheckBox cbProgress = (CheckBox) list.findViewById(R.id.cbProgress);
+            cbProgress.setChecked(false);
+            if (tasks.get(position).getTaskState() == 1) {
+                cbProgress.setText("Accept");
+            } else if (tasks.get(position).getTaskState() == 2) {
+                cbProgress.setText("Finish");
+            } else {
+                cbProgress.setText("Finished");
+                cbProgress.setChecked(true);
+            }
+
         } else {
             list = (View) convertView;
         }
