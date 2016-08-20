@@ -70,7 +70,9 @@ public class TaskFragment extends Fragment {
                     tasks.add(task);
                 }
             }
-
+            btnMyTasks.setTextColor(getResources().getColor(R.color.orangeWeb));
+            btnReceivedRequests.setTextColor(getResources().getColor(R.color.white));
+            btnSentRequests.setTextColor(getResources().getColor(R.color.white));
         }
         else if (type == 2) {
             for (Task task : allTasks) {
@@ -78,6 +80,9 @@ public class TaskFragment extends Fragment {
                     tasks.add(task);
                 }
             }
+            btnMyTasks.setTextColor(getResources().getColor(R.color.white));
+            btnReceivedRequests.setTextColor(getResources().getColor(R.color.orangeWeb));
+            btnSentRequests.setTextColor(getResources().getColor(R.color.white));
         }
         else if (type == 3) {
             for (Task task : allTasks) {
@@ -85,6 +90,9 @@ public class TaskFragment extends Fragment {
                     tasks.add(task);
                 }
             }
+            btnMyTasks.setTextColor(getResources().getColor(R.color.white));
+            btnReceivedRequests.setTextColor(getResources().getColor(R.color.white));
+            btnSentRequests.setTextColor(getResources().getColor(R.color.orangeWeb));
         }
     }
 
