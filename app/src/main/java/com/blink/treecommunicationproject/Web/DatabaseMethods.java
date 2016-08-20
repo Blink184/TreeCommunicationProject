@@ -1,6 +1,8 @@
 package com.blink.treecommunicationproject.Web;
 
 import com.blink.treecommunicationproject.Objects.Employee;
+
+import java.util.Date;
 import java.util.HashMap;
 import static com.blink.treecommunicationproject.Web.Links.*;
 
@@ -27,6 +29,20 @@ public class DatabaseMethods {
         postDataParams.put("userroleid", String.valueOf(userRoleId));
         postDataParams.put("limit", String.valueOf(limit));
         return new Connection().performPostCall(GETTASKS, postDataParams, finished);
+    }
+
+    public static Connection.ConnectionTask acceptTask(int taskid, Date date, Connection.OnCallFinish finished) {
+        HashMap<String, String> postDataParams = new HashMap<>();
+        postDataParams.put("taskid", String.valueOf(taskid));
+        postDataParams.put("date", String.valueOf(date));
+        return new Connection().performPostCall(ACCEPTTASK, postDataParams, finished);
+    }
+
+    public static Connection.ConnectionTask finishTask(int taskid, Date date, Connection.OnCallFinish finished) {
+        HashMap<String, String> postDataParams = new HashMap<>();
+        postDataParams.put("taskid", String.valueOf(taskid));
+        postDataParams.put("date", String.valueOf(date));
+        return new Connection().performPostCall(FINISHTASK, postDataParams, finished);
     }
 //    public static Connection.ConnectionTask getUser(HashMap<String, String> postDataParams, Connection.OnCallFinish finished) {
 //        return new Connection().performPostCall(GETUSER, postDataParams, finished);

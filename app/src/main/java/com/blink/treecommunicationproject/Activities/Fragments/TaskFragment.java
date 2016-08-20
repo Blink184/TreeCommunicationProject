@@ -1,8 +1,10 @@
 package com.blink.treecommunicationproject.Activities.Fragments;
 
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.blink.treecommunicationproject.Activities.Adapters.TaskFragmentListItemAdapter;
 import com.blink.treecommunicationproject.Objects.Employee;
@@ -178,6 +181,8 @@ public class TaskFragment extends Fragment {
                 listOfTasks.setAdapter(adapter);
             }
         });
+
+
 /*        assignNewTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,16 +194,6 @@ public class TaskFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });*/
-
-//        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view,
-//                                    int position, long id) {
-//                Toast.makeText(getActivity(), "You Clicked on " + ppl[+position], Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
 
     }
 
