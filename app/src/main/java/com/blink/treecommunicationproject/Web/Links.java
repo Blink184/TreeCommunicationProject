@@ -12,4 +12,5 @@ public class Links {
     public static String ACTIONS = HOST + "database/api/";
     public static String VALIDATEUSER = ACTIONS + "validateUser.php";
     public static String GETTREE = ACTIONS + "getUserRoleTree.php";
+    public static String GETTASKS = ACTIONS + "getTasks.php";
 }

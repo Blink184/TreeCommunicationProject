@@ -7,11 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.blink.treecommunicationproject.Activities.Adapters.ToDoTaskFragmentListItemAdapter;
-import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.Objects.Task;
 import com.blink.treecommunicationproject.R;
-import com.blink.treecommunicationproject.Services.Global;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,8 +40,8 @@ public class ToDoTaskFragment extends Fragment {
     private void initialize() {
         listOfTasks = (ListView) rootView.findViewById(R.id.lvTasks);
 
-        ToDoTaskFragmentListItemAdapter adapter = new ToDoTaskFragmentListItemAdapter(getActivity(), tasks);
-        listOfTasks.setAdapter(adapter);
+/*        ToDoTaskFragmentListItemAdapter adapter = new ToDoTaskFragmentListItemAdapter(getActivity(), tasks);
+        listOfTasks.setAdapter(adapter);*/
 
 //        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //

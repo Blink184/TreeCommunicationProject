@@ -5,13 +5,12 @@
     <color name="myPrimaryColor">#3F51B5</color>
     <color name="myPrimaryDarkColor">#3F51B5</color>
     <color name="myAccentColor">#3F51B5</color>
-    <color name="myDrawerBackground">#FFF2F2F2</color>
+    <color name="myDrawerBackground">#f2f2f2</color>
     <color name="myWindowBackground">#DEDEDE</color>
     <color name="myTextPrimaryColor">#FFFFFF</color>
     <color name="selected_gray">#ffdbdbdb</color>
     <color name="input_login">#222222</color>
     <color name="input_login_hint">#999999</color>
-    <color name="input_register_bg">#3b4148</color>
 
     <!--<color name="bg_main">#0FA1D3</color>-->
     <color name="black">#ff000000</color>
@@ -25,8 +24,6 @@
     <color name="blue01">#0099CC</color>
     <color name="blue03">#0FA1D3</color>
     <color name="blue13">#C5EAF8</color>
-
-    <color name="green10">#B6DB49</color>
 
 
     <color name="blueBtnWeb">#a1bfcd</color>

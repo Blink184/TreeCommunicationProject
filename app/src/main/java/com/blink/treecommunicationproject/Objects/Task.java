@@ -7,21 +7,66 @@ import java.util.Date;
  */
 public class Task {
     private int id;
-    private Employee fromEmployee;
-    private Employee toEmployee;
+    private int fromUserRoleId;
+    private int toUserRoleId;
+    private String fromUserRole;
+    private String toUserRole;
+    private String title;
+    private String content;
+    private int taskState;
+    private String dueDate;
+    private String startDate;
+    private boolean isCanceled;
+    private boolean isDeleted;
+    private boolean isDone;
+    private int delegatedToUserRoleId;
     private Date dateAssigned;
     private Date dateDone;
-    private boolean isDone;
-    private String description;
+    private Date cancelDate;
+    private Date dateReceived;
+    private String DelegatedToUserRole;
 
-    public Task(int id, Employee fromEmployee, Employee toEmployee, Date dateAssigned, String description) {
-        this.id = id;
-        this.fromEmployee = fromEmployee;
-        this.toEmployee = toEmployee;
-        this.dateAssigned = dateAssigned;
-        this.dateDone = null;
-        this.isDone = false;
-        this.description = description;
+    public Task() {
+    }
+
+    public String getDelegatedToUserRole() {
+        return DelegatedToUserRole;
+    }
+
+    public void setDelegatedToUserRole(String delegatedToUserRole) {
+        DelegatedToUserRole = delegatedToUserRole;
+    }
+
+    public int getFromUserRoleId() {
+        return fromUserRoleId;
+    }
+
+    public void setFromUserRoleId(int fromUserRoleId) {
+        this.fromUserRoleId = fromUserRoleId;
+    }
+
+    public int getToUserRoleId() {
+        return toUserRoleId;
+    }
+
+    public void setToUserRoleId(int toUserRoleId) {
+        this.toUserRoleId = toUserRoleId;
+    }
+
+    public String getFromUserRole() {
+        return fromUserRole;
+    }
+
+    public void setFromUserRole(String fromUserRole) {
+        this.fromUserRole = fromUserRole;
+    }
+
+    public String getToUserRole() {
+        return toUserRole;
+    }
+
+    public void setToUserRole(String toUserRole) {
+        this.toUserRole = toUserRole;
     }
 
     public int getId() {
@@ -32,20 +77,76 @@ public class Task {
         this.id = id;
     }
 
-    public Employee getFromEmployee() {
-        return fromEmployee;
+    public String getTitle() {
+        return title;
     }
 
-    public void setFromEmployee(Employee fromEmployee) {
-        this.fromEmployee = fromEmployee;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Employee getToEmployee() {
-        return toEmployee;
+    public String getContent() {
+        return content;
     }
 
-    public void setToEmployee(Employee toEmployee) {
-        this.toEmployee = toEmployee;
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getTaskState() {
+        return taskState;
+    }
+
+    public void setTaskState(int taskState) {
+        this.taskState = taskState;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public boolean isCanceled() {
+        return isCanceled;
+    }
+
+    public void setCanceled(boolean canceled) {
+        isCanceled = canceled;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
+    }
+
+    public int getDelegatedToUserRoleId() {
+        return delegatedToUserRoleId;
+    }
+
+    public void setDelegatedToUserRoleId(int delegatedToUserRoleId) {
+        this.delegatedToUserRoleId = delegatedToUserRoleId;
     }
 
     public Date getDateAssigned() {
@@ -64,19 +165,19 @@ public class Task {
         this.dateDone = dateDone;
     }
 
-    public boolean isDone() {
-        return isDone;
+    public Date getCancelDate() {
+        return cancelDate;
     }
 
-    public void setIsDone(boolean isDone) {
-        this.isDone = isDone;
+    public void setCancelDate(Date cancelDate) {
+        this.cancelDate = cancelDate;
     }
 
-    public String getDescription() {
-        return description;
+    public Date getDateReceived() {
+        return dateReceived;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDateReceived(Date dateReceived) {
+        this.dateReceived = dateReceived;
     }
 }
