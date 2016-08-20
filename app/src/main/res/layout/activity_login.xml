@@ -47,6 +47,29 @@
             android:textColor="@color/input_login"
             android:textColorHint="@color/input_login_hint" />
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/almost_Gray"
+                android:checked="true"
+                android:id="@+id/chbEmulator"
+                android:text="Emulator"/>
+            <EditText
+                android:layout_width="200dp"
+                android:layout_margin="10dp"
+                android:visibility="invisible"
+                android:id="@+id/etIP"
+                android:layout_height="match_parent"
+                android:textColor="@color/almost_Gray"
+                android:checked="true"
+                android:text="10.0.2.2:80"/>
+        </LinearLayout>
+
         <!-- LoginActivity Button -->
 
         <Button
