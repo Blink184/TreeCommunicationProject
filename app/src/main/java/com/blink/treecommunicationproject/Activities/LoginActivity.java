@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Preferences;
 import com.blink.treecommunicationproject.Web.Connection;
 import com.blink.treecommunicationproject.Web.DatabaseMethods;
+import com.blink.treecommunicationproject.Web.Links;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,7 +40,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
     private Button btnLogin;
-    private EditText etUsername, etPassword;
+    private CheckBox chbEmulator;
+    private EditText etUsername, etPassword, etIP;
     private Preferences preferences;
 
     @Override
@@ -55,11 +59,21 @@ public class LoginActivity extends AppCompatActivity {
         });
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
+        etIP = (EditText) findViewById(R.id.etIP);
+        chbEmulator = (CheckBox) findViewById(R.id.chbEmulator);
+        chbEmulator.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                etIP.setVisibility(isChecked ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
         preferences = new Preferences(getApplicationContext());
       //  ProgressBar.set(findViewById(R.id.circle_loading_view));
     }
 
     private void login() {
+        Links.IP = etIP.getText().toString();
+        Links.ipChanged();
             HashMap<String, String> params = new HashMap<>();
             params.put("username", etUsername.getText().toString());
             params.put("password", etPassword.getText().toString());
