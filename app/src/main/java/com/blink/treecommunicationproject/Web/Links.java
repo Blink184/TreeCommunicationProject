@@ -13,4 +13,6 @@ public class Links {
     public static String VALIDATEUSER = ACTIONS + "validateUser.php";
     public static String GETTREE = ACTIONS + "getUserRoleTree.php";
     public static String GETTASKS = ACTIONS + "getTasks.php";
+    public static String ACCEPTTASK = ACTIONS + "acceptTask.php";
+    public static String FINISHTASK = ACTIONS + "finishTask.php";
 }

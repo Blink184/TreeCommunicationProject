@@ -1,6 +1,8 @@
 package com.blink.treecommunicationproject.Activities.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +12,18 @@ import android.widget.TextView;
 
 import com.blink.treecommunicationproject.Objects.Task;
 import com.blink.treecommunicationproject.R;
+import com.blink.treecommunicationproject.Services.Global;
+import com.blink.treecommunicationproject.Web.Connection;
+import com.blink.treecommunicationproject.Web.DatabaseMethods;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,7 +54,7 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
         View list;
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -53,6 +63,8 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
             list = new View(mContext);
 
             list = inflater.inflate(R.layout.fragment_task_list_item, parent, false);
+
+            Task task = tasks.get(position);
 
             TextView to = (TextView) list.findViewById(R.id.tvTo);
             TextView title = (TextView) list.findViewById(R.id.tvTitle);
@@ -66,22 +78,69 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
             startDate.setText(tasks.get(position).getStartDate().toString());
             dueDate.setText(tasks.get(position).getDueDate().toString());
 
-            CheckBox cbProgress = (CheckBox) list.findViewById(R.id.cbProgress);
+            final CheckBox cbProgress = (CheckBox) list.findViewById(R.id.cbProgress);
             cbProgress.setChecked(false);
-            if (tasks.get(position).getTaskState() == 1) {
+            if (task.getFromUserRoleId() == Global.userRole.getId() && task.getToUserRoleId() != Global.userRole.getId()) {
+                cbProgress.setEnabled(false);
+            }
+
+            if (task.getTaskState() == 1) {
                 cbProgress.setText("Accept");
-            } else if (tasks.get(position).getTaskState() == 2) {
+            } else if (task.getTaskState() == 2) {
                 cbProgress.setText("Finish");
             } else {
                 cbProgress.setText("Finished");
                 cbProgress.setChecked(true);
+                cbProgress.setEnabled(false);
             }
+
+            cbProgress.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ProgressTaskState(tasks.get(position), cbProgress);
+                }
+            });
 
         } else {
             list = (View) convertView;
         }
 
         return list;
+    }
 
+    private void ProgressTaskState(Task task, CheckBox cbProgress) {
+        Calendar c = Calendar.getInstance();
+        Date date = c.getTime();
+
+        if (task.getTaskState() == 1) {
+            //accept task
+            cbProgress.setEnabled(false);
+            DatabaseMethods.acceptTask(task.getId(), date, new Connection.OnCallFinish() {
+                @Override
+                public void processFinish(String output) throws JSONException {
+                        JSONObject result = new JSONObject(output);
+                        if (result.getString("s").equals("1")) {
+                            //reload tasks
+                        } else {
+                            System.out.println("unsuccessful query");
+                        }
+                    }
+                }).execute();
+
+        } else if (task.getTaskState() == 2){
+            // finish task
+            cbProgress.setEnabled(false);
+            DatabaseMethods.finishTask(task.getId(), date, new Connection.OnCallFinish() {
+                @Override
+                public void processFinish(String output) throws JSONException {
+                    JSONObject result = new JSONObject(output);
+                    if (result.getString("s").equals("1")) {
+                        //reload tasks
+                    } else {
+                        System.out.println("unsuccessful query");
+                    }
+                }
+            }).execute();
+        }
     }
 }
