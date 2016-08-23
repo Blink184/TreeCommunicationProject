@@ -179,6 +179,8 @@ public class AssignNewTaskFragment extends Fragment {
                     fragmentTransaction.commit();
                 }
             }
+
+
         });
 
     }
@@ -199,21 +201,25 @@ public class AssignNewTaskFragment extends Fragment {
     }
 
     private boolean paramsAreCorrect() {
+        boolean res = false;
         if (etTitle.getText().length() < 1) {
             Toast.makeText(getActivity().getApplicationContext(), "Please enter a title.", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (etDescription.getText().length() < 5) {
-            Toast.makeText(getActivity().getApplicationContext(), "Please enter a longer description.", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (tvDueDate.getText().length() < 1) {
-            Toast.makeText(getActivity().getApplicationContext(), "Please enter a due date.", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (selectedEmployee == null) {
-            Toast.makeText(getActivity().getApplicationContext(), "Please select to whom the task is for.", Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            return true;
+            return res;
         }
-
+        if (etDescription.getText().length() < 5) {
+            Toast.makeText(getActivity().getApplicationContext(), "Please enter a longer description.", Toast.LENGTH_LONG).show();
+            return res;
+        }
+        if (tvDueDate.getText().length() < 1) {
+            Toast.makeText(getActivity().getApplicationContext(), "Please enter a due date.", Toast.LENGTH_LONG).show();
+            return res;
+        }
+        if (selectedEmployee == null) {
+//            Toast.makeText(getActivity().getApplicationContext(), "Please select to whom the task is for.", Toast.LENGTH_LONG).show();
+            System.out.println("null");
+            return res;
+        }
+        //res = true;
+        return res;
     }
 }
