@@ -54,8 +54,32 @@
                         android:textColor="@color/black"
                         android:id="@+id/actvToEmployee" />
                 </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_weight="0.2" />
 
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:textColor="@color/black"
+                    android:id="@+id/tvTitle"
+                    android:editable="true" />
+            </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"

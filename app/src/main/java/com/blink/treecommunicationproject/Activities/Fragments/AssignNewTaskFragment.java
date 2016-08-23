@@ -51,6 +51,8 @@ public class AssignNewTaskFragment extends Fragment {
     private ArrayList<UserRole> allUserRoles = new ArrayList<>();
     private ImageButton send;
     private AutoCompleteTextView actvToEmployee;
+    private TextView tvTitle;
+    private TextView tvDescription;
     private Employee selectedEmployee;
     private boolean isDelegated;
     private int mYear;
@@ -120,6 +122,9 @@ public class AssignNewTaskFragment extends Fragment {
         send = (ImageButton) rootView.findViewById(R.id.btnSendTask);
         btnSelectDueDate = (Button) rootView.findViewById(R.id.btnSelectDueDate);
         tvDueDate = (TextView) rootView.findViewById(R.id.tvDueDate);
+        tvTitle = (TextView) rootView.findViewById(R.id.tvTitle);
+        tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
+        tvDueDate = (TextView) rootView.findViewById(R.id.tvDueDate);
         actvToEmployee = (AutoCompleteTextView) rootView.findViewById(R.id.actvToEmployee);
 
         tvDueDate.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
@@ -135,7 +140,6 @@ public class AssignNewTaskFragment extends Fragment {
             }
         });
 
-
         AutoCompleteTVItemAdapter actvAdapter = new AutoCompleteTVItemAdapter(getActivity().getApplicationContext(), toEmployees);
 
         actvToEmployee.setAdapter(actvAdapter);
@@ -149,6 +153,7 @@ public class AssignNewTaskFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (paramsAreCorrect()) {
+                    addTask();
                     Toast.makeText(getActivity(), "Your task has been sent", Toast.LENGTH_SHORT).show();
                     Fragment fragment = new TaskFragment();
                     FragmentManager fragmentManager = getActivity().getFragmentManager();
@@ -162,7 +167,36 @@ public class AssignNewTaskFragment extends Fragment {
 
     }
 
+    private void addTask() {
+        DatabaseMethods.insertTask(tvTitle.getText().toString(), tvDescription.getText().toString(), actvToEmployee.getId(), Global.userRole.getId(), tvDueDate.getText().toString(), new Connection.OnCallFinish() {
+            @Override
+            public void processFinish(String output) throws JSONException {
+                JSONObject result = new JSONObject(output);
+                if (result.getString("s").equals("1")) {
+                    JSONArray array = (result.getJSONArray("i"));
+                }
+            }
+
+        }).execute();
+    }
+
     private boolean paramsAreCorrect() {
+        if (tvTitle.getText().length() < 1) {
+            Toast.makeText(getActivity().getApplicationContext(), "Please enter a title.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (tvDescription.getText().length() < 1) {
+            Toast.makeText(getActivity().getApplicationContext(), "Please enter a description.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (tvDueDate.getText().length() < 1) {
+            Toast.makeText(getActivity().getApplicationContext(), "Please enter a due date.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        if (actvToEmployee.getId() < 1) {
+            Toast.makeText(getActivity().getApplicationContext(), "Please select to whom the task is for.", Toast.LENGTH_LONG).show();
+            return false;
+        }
         return true;
     }
 }

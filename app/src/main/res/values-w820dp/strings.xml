@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="select_due_date">Select Due Date</string>
+    <string name="broadcast">Broadcast</string>
+    <string name="title">Title</string>
 </resources>
