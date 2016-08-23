@@ -16,8 +16,10 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.blink.treecommunicationproject.Activities.Adapters.ObjectAdapters.AutoCompleteTVItemAdapter;
@@ -28,6 +30,7 @@ import com.blink.treecommunicationproject.Objects.User;
 import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
+import com.blink.treecommunicationproject.Services.SelectDateFragment;
 import com.blink.treecommunicationproject.Web.Connection;
 import com.blink.treecommunicationproject.Web.DatabaseMethods;
 
@@ -35,6 +38,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -46,10 +50,16 @@ public class AssignNewTaskFragment extends Fragment {
     private ArrayList<UserRole> toEmployees = new ArrayList<>();
     private ArrayList<UserRole> allUserRoles = new ArrayList<>();
     private ImageButton send;
-    private DatePicker dpDueDate;
     private AutoCompleteTextView actvToEmployee;
     private Employee selectedEmployee;
     private boolean isDelegated;
+    private int mYear;
+    private int mMonth;
+    private int mDay;
+
+    private Button btnSelectDueDate;
+    private TextView tvDueDate;
+    static final int DATE_DIALOG_ID = 0;
 
     @SuppressLint("ValidFragment")
     public AssignNewTaskFragment(Employee selectedEmployee) {
@@ -108,7 +118,23 @@ public class AssignNewTaskFragment extends Fragment {
 
     public void initialize() {
         send = (ImageButton) rootView.findViewById(R.id.btnSendTask);
+        btnSelectDueDate = (Button) rootView.findViewById(R.id.btnSelectDueDate);
+        tvDueDate = (TextView) rootView.findViewById(R.id.tvDueDate);
         actvToEmployee = (AutoCompleteTextView) rootView.findViewById(R.id.actvToEmployee);
+
+        tvDueDate.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+
+        btnSelectDueDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                DialogFragment newFragment = new SelectDateFragment(tvDueDate);
+                newFragment.show(getFragmentManager(), "DatePicker");
+
+            }
+        });
+
 
         AutoCompleteTVItemAdapter actvAdapter = new AutoCompleteTVItemAdapter(getActivity().getApplicationContext(), toEmployees);
 
