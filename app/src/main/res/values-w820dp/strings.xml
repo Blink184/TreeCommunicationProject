@@ -3,4 +3,5 @@
     <string name="select_due_date">Select Due Date</string>
     <string name="broadcast">Broadcast</string>
     <string name="title">Title</string>
+    <string name="assign_new_task">Assign New Task</string>
 </resources>

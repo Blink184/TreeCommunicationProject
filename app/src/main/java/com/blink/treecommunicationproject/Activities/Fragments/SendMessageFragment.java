@@ -28,7 +28,7 @@ public class SendMessageFragment extends Fragment {
     private View rootView;
     private ImageButton send;
     private AutoCompleteTextView actvToEmployee;
-    private Employee selectedEmployee;
+    private UserRole selectedEmployee;
     private ArrayList<UserRole> toEmployee = new ArrayList<UserRole>();
 
     public SendMessageFragment() {
@@ -36,7 +36,7 @@ public class SendMessageFragment extends Fragment {
     }
 
     @SuppressLint("ValidFragment")
-    public SendMessageFragment(Employee selectedEmployee) {
+    public SendMessageFragment(UserRole selectedEmployee) {
         this.selectedEmployee = selectedEmployee;
     }
 
@@ -65,7 +65,7 @@ public class SendMessageFragment extends Fragment {
         actvToEmployee.setAdapter(actvAdapter);
         actvToEmployee.setThreshold(1);
         if(selectedEmployee != null){
-            actvToEmployee.setText(selectedEmployee.getFullName());
+            actvToEmployee.setText(selectedEmployee.getUser().getFullName());
         }
         send.setOnClickListener(new View.OnClickListener() {
             @Override

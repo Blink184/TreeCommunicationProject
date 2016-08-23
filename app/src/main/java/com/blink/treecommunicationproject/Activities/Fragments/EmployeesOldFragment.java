@@ -33,9 +33,9 @@ public class EmployeesOldFragment extends Fragment {
     private ImageButton ibBack;
     private ImageButton ibBroadcast;
     private TextView tvRootEmployeeType;
-    private List<Employee> employees = new ArrayList<>();
-    private List<Employee> tmpDisplayedEmployees = new ArrayList<>();
-    private Employee tmpSelectedEmployee;
+    private List<UserRole> employees = new ArrayList<>();
+    private List<UserRole> tmpDisplayedEmployees = new ArrayList<>();
+    private UserRole tmpSelectedEmployee;
     private SelectableRoundedImageView ivRootEmployeeImage;
 
     public EmployeesOldFragment(){}
@@ -117,7 +117,7 @@ public class EmployeesOldFragment extends Fragment {
         super.onCreateContextMenu(menu, v, menuInfo);
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
         tmpSelectedEmployee = tmpDisplayedEmployees.get(info.position);
-        menu.setHeaderTitle(tmpSelectedEmployee.getFullName());
+        menu.setHeaderTitle(tmpSelectedEmployee.getUser().getFullName());
         //TODO : not hardcoding it
         menu.add(0, v.getId(), 0, "View Profile");//groupId, itemId, order, title
         menu.add(0, v.getId(), 0, "View Employees");
@@ -142,20 +142,20 @@ public class EmployeesOldFragment extends Fragment {
         return true;
     }
 
-    private void sendMessage(Employee tmpSelectedEmployee) {
+    private void sendMessage(UserRole tmpSelectedEmployee) {
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, new SendMessageFragment(tmpSelectedEmployee))
                 .commit();
     }
 
-    private void viewProfile(Employee tmpSelectedEmployee) {
+    private void viewProfile(UserRole tmpSelectedEmployee) {
         Intent i = new Intent(rootView.getContext(), EmployeeProfileActivity.class);
-        i.putExtra("name", tmpSelectedEmployee.getFullName());
-        i.putExtra("type", tmpSelectedEmployee.getEmployeeType().toString());
+        i.putExtra("name", tmpSelectedEmployee.getUser().getFullName());
+        i.putExtra("type", tmpSelectedEmployee.getJobTitle().toString());
         startActivity(i);
     }
 
-    private void assignTask(Employee tmpSelectedEmployee) {
+    private void assignTask(UserRole tmpSelectedEmployee) {
         getFragmentManager().beginTransaction()
                 .replace(R.id.container, new AssignNewTaskFragment(tmpSelectedEmployee))
                 .commit();
