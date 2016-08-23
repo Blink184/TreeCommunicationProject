@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.blink.treecommunicationproject.Activities.Adapters.Holders.EmployeeItem;
 import com.blink.treecommunicationproject.Objects.Employee;
+import com.blink.treecommunicationproject.Objects.Role;
+import com.blink.treecommunicationproject.Objects.User;
 import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
@@ -106,22 +108,37 @@ public class EmployeesFragment extends Fragment {
 
             private TreeNode getTreeNodes(JSONObject obj) throws JSONException {
                 if(obj == null){
-                    return new TreeNode(new EmployeeItem.EmployeeTreeItem(1, "You", "", ""));
+                    return new TreeNode(new EmployeeItem.EmployeeTreeItem(Global.userRole));
                 }
-                return _getTreeNodes(obj.getJSONArray("Children"), new TreeNode(new EmployeeItem.EmployeeTreeItem(obj.getInt("UserRoleId"), obj.get("Name").toString(), obj.get("Role").toString(), Links.PROFILEPICTURESFOLDER + obj.get("Image").toString())));
+                return _getTreeNodes(obj.getJSONArray("Children"), new TreeNode(new EmployeeItem.EmployeeTreeItem(extractUserRole(obj))));
             }
             private TreeNode _getTreeNodes(JSONArray obj, TreeNode res) throws JSONException {
                 if(obj == null || obj.length() == 0){
                     return res;
                 }
                 for(int i = 0; i < obj.length(); i++){
-                    TreeNode tn = new TreeNode(new EmployeeItem.EmployeeTreeItem(obj.optJSONObject(i).getInt("UserRoleId"), obj.optJSONObject(i).get("Name").toString(), obj.optJSONObject(i).get("Role").toString(), Links.PROFILEPICTURESFOLDER + obj.optJSONObject(i).get("Image").toString()));
+                    TreeNode tn = new TreeNode(new EmployeeItem.EmployeeTreeItem(extractUserRole(obj.optJSONObject(i))));
                     _getTreeNodes(obj.optJSONObject(i).getJSONArray("Children"), tn);
+                    tn.setExpanded(true);
                     res.addChild(tn);
                 }
                 return res;
             }
         }).execute();
+    }
+
+    private UserRole extractUserRole(JSONObject obj) throws JSONException {
+        User u = new User();
+        u.setFirstName(obj.get("FirstName").toString());
+        u.setLastName(obj.get("LastName").toString());
+        u.setImage(Links.PROFILEPICTURESFOLDER + obj.get("Image").toString());
+        Role r = new Role();
+        r.setDesription(obj.get("Role").toString());
+        UserRole ur = new UserRole();
+        ur.setId(obj.getInt("UserRoleId"));
+        ur.setUser(u);
+        ur.setRole(r);
+        return ur;
     }
 
     private void loadEmployee(final Employee employee) {

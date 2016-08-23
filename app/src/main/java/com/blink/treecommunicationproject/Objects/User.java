@@ -20,6 +20,7 @@ public class User {
     private String phone;
     private String address;
     private String email;
+    private String image;
     private boolean isAdmin;
     private Date lastActiveDate;
     private boolean isLoggedIn;
@@ -50,7 +51,6 @@ public class User {
         this.isAdmin = isAdmin;
         this.lastActiveDate = lastActiveDate;
         this.isDeleted = isDeleted;
-//        this.image = image;
         this.isBanned = isBanned;
         this.isLoggedIn = isLoggedIn;
     }
@@ -126,12 +126,20 @@ public class User {
         isDeleted = deleted;
     }
 
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 //    public void setImage(Bitmap image) {
 //        this.image = image;
 //    }
 
     public int getId() {
         return id;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public String getFirstName() {
