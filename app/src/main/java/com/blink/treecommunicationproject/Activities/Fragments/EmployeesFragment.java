@@ -17,6 +17,7 @@ import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
 import com.blink.treecommunicationproject.Web.Connection;
 import com.blink.treecommunicationproject.Web.DatabaseMethods;
+import com.blink.treecommunicationproject.Web.Links;
 import com.joooonho.SelectableRoundedImageView;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
@@ -105,16 +106,16 @@ public class EmployeesFragment extends Fragment {
 
             private TreeNode getTreeNodes(JSONObject obj) throws JSONException {
                 if(obj == null){
-                    return new TreeNode(new EmployeeItem.EmployeeTreeItem(1, "You", ""));
+                    return new TreeNode(new EmployeeItem.EmployeeTreeItem(1, "You", "", ""));
                 }
-                return _getTreeNodes(obj.getJSONArray("Children"), new TreeNode(new EmployeeItem.EmployeeTreeItem(obj.getInt("UserRoleId"), obj.get("Name").toString(), obj.get("Role").toString())));
+                return _getTreeNodes(obj.getJSONArray("Children"), new TreeNode(new EmployeeItem.EmployeeTreeItem(obj.getInt("UserRoleId"), obj.get("Name").toString(), obj.get("Role").toString(), Links.PROFILEPICTURESFOLDER + obj.get("Image").toString())));
             }
             private TreeNode _getTreeNodes(JSONArray obj, TreeNode res) throws JSONException {
                 if(obj == null || obj.length() == 0){
                     return res;
                 }
                 for(int i = 0; i < obj.length(); i++){
-                    TreeNode tn = new TreeNode(new EmployeeItem.EmployeeTreeItem(obj.optJSONObject(i).getInt("UserRoleId"), obj.optJSONObject(i).get("Name").toString(), obj.optJSONObject(i).get("Role").toString()));
+                    TreeNode tn = new TreeNode(new EmployeeItem.EmployeeTreeItem(obj.optJSONObject(i).getInt("UserRoleId"), obj.optJSONObject(i).get("Name").toString(), obj.optJSONObject(i).get("Role").toString(), Links.PROFILEPICTURESFOLDER + obj.optJSONObject(i).get("Image").toString()));
                     _getTreeNodes(obj.optJSONObject(i).getJSONArray("Children"), tn);
                     res.addChild(tn);
                 }

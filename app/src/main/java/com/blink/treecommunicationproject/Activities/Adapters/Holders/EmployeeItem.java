@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.blink.treecommunicationproject.Activities.Fragments.SendMessageFragment;
 import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.R;
+import com.blink.treecommunicationproject.Services.ImageLoader;
+import com.joooonho.SelectableRoundedImageView;
 import com.unnamed.b.atv.model.TreeNode;
 
 /**
@@ -26,6 +28,8 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
     private TextView tvType;
     private TextView tvArrow;
     private ImageButton ibSendMessage;
+    private ImageLoader imageLoader;
+    private SelectableRoundedImageView ivRootEmployeeImage;
 
     public EmployeeItem(Context context) {
         super(context);
@@ -36,10 +40,14 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
         final LayoutInflater inflater = LayoutInflater.from(context);
         final View view = inflater.inflate(R.layout.fragment_home2_tree_node, null, false);
         view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        imageLoader = new ImageLoader(view.getContext());
+
         tvName = (TextView) view.findViewById(R.id.tvName);
         tvType = (TextView) view.findViewById(R.id.tvType);
         tvArrow = (TextView) view.findViewById(R.id.tvArrow);
         ibSendMessage = (ImageButton) view.findViewById(R.id.ibSendMessage);
+        ivRootEmployeeImage = (SelectableRoundedImageView) view.findViewById(R.id.ivRootEmployeeImage);
+
         tvName.setText(value.name);
         tvType.setText(value.role);
 
@@ -86,6 +94,8 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
 //            view.findViewById(R.id.btn_delete).setVisibility(View.GONE);
 //        }
 
+        imageLoader.DisplayImage(value.imageURL, ivRootEmployeeImage);
+
         return view;
     }
 
@@ -98,11 +108,13 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
         public int userRoleId;
         public String name;
         public String role;
+        public String imageURL;
 
-        public EmployeeTreeItem(int userRoleId, String name, String role) {
+        public EmployeeTreeItem(int userRoleId, String name, String role, String imageURL) {
             this.userRoleId= userRoleId;
             this.name = name;
             this.role = role;
+            this.imageURL = imageURL;
         }
     }
 }
