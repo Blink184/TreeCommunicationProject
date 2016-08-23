@@ -31,6 +31,20 @@ public class DatabaseMethods {
         return new Connection().performPostCall(GETTASKS, postDataParams, finished);
     }
 
+    public static Connection.ConnectionTask insertTask(String title, String content, int empnameto, int empnamefrom, String duedate,Connection.OnCallFinish finished) {
+        HashMap<String, String> postDataParams = new HashMap<>();
+        postDataParams.put("title", String.valueOf(title));
+        postDataParams.put("content", String.valueOf(content));
+        postDataParams.put("empnameto", String.valueOf(empnameto));
+        postDataParams.put("empnamefrom", String.valueOf(empnamefrom));
+        postDataParams.put("duedate", String.valueOf(duedate));
+        return new Connection().performPostCall(INSERTTASK, postDataParams, finished);
+    }
+
+    public static Connection.ConnectionTask getUserRoles(HashMap<String, String> postDataParams, Connection.OnCallFinish finished) {
+        return new Connection().performPostCall(GETUSERROLES, postDataParams, finished);
+    }
+
     public static Connection.ConnectionTask acceptTask(int taskid, Date date, Connection.OnCallFinish finished) {
         HashMap<String, String> postDataParams = new HashMap<>();
         postDataParams.put("taskid", String.valueOf(taskid));

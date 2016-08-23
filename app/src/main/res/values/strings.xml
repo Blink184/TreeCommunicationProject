@@ -21,4 +21,6 @@
     <string name="message">Message</string>
     <string name="all_employees">All Employees</string>
     <string name="send_broadcast">Send Broadcast</string>
+    <string name="pick_date">Pick Due Date</string>
+    <string name="select_due_date">Select Due Date</string>
 </resources>

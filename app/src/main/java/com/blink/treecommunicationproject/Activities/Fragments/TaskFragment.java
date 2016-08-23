@@ -183,17 +183,17 @@ public class TaskFragment extends Fragment {
         });
 
 
-/*        assignNewTask.setOnClickListener(new View.OnClickListener() {
+        assignNewTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new AssignNewTaskFragment();
+                Fragment fragment = new AssignNewTaskFragment(false);
                 FragmentManager fragmentManager = getActivity().getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
-        });*/
+        });
 
     }
 

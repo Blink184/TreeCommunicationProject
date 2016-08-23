@@ -112,9 +112,10 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
         Calendar c = Calendar.getInstance();
         Date date = c.getTime();
 
+        cbProgress.setEnabled(false);
         if (task.getTaskState() == 1) {
             //accept task
-            cbProgress.setEnabled(false);
+            cbProgress.setText("Accepted");
             DatabaseMethods.acceptTask(task.getId(), date, new Connection.OnCallFinish() {
                 @Override
                 public void processFinish(String output) throws JSONException {
@@ -129,7 +130,7 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
 
         } else if (task.getTaskState() == 2){
             // finish task
-            cbProgress.setEnabled(false);
+            cbProgress.setText("Finished");
             DatabaseMethods.finishTask(task.getId(), date, new Connection.OnCallFinish() {
                 @Override
                 public void processFinish(String output) throws JSONException {
