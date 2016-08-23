@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.blink.treecommunicationproject.Activities.Fragments.SendMessageFragment;
 import com.blink.treecommunicationproject.Objects.Employee;
+import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.ImageLoader;
 import com.joooonho.SelectableRoundedImageView;
@@ -28,6 +29,7 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
     private TextView tvType;
     private TextView tvArrow;
     private ImageButton ibSendMessage;
+    private ImageButton ibAssignTask;
     private ImageLoader imageLoader;
     private SelectableRoundedImageView ivRootEmployeeImage;
 
@@ -46,16 +48,25 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
         tvType = (TextView) view.findViewById(R.id.tvType);
         tvArrow = (TextView) view.findViewById(R.id.tvArrow);
         ibSendMessage = (ImageButton) view.findViewById(R.id.ibSendMessage);
+        ibAssignTask = (ImageButton) view.findViewById(R.id.ibAssignTask);
         ivRootEmployeeImage = (SelectableRoundedImageView) view.findViewById(R.id.ivRootEmployeeImage);
 
-        tvName.setText(value.name);
-        tvType.setText(value.role);
+        tvName.setText(value.userRole.getUser().getFullName());
+        tvType.setText(value.userRole.getRole().getDesription());
 
         ibSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((Activity)context).getFragmentManager().beginTransaction()
-                        .replace(R.id.container, new SendMessageFragment(new Employee(0, value.name, "", "", Employee.EmployeeType.Advisor)))
+                        .replace(R.id.container, new SendMessageFragment(value.userRole))
+                        .commit();
+            }
+        });
+        ibSendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((Activity)context).getFragmentManager().beginTransaction()
+                        .replace(R.id.container, new SendMessageFragment(value.userRole))
                         .commit();
             }
         });
@@ -74,27 +85,7 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
         LinearLayout ll = (LinearLayout) view.findViewById(R.id.ll);
         ll.setPadding(leftPadding,5,5,5);
 
-//        view.findViewById(R.id.btn_addFolder).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                TreeNode newFolder = new TreeNode(new IconTreeItemHolder.IconTreeItem(R.string.ic_folder, "New Folder"));
-//                getTreeView().addNode(node, newFolder);
-//            }
-//        });
-
-//        view.findViewById(R.id.btn_delete).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                getTreeView().removeNode(node);
-//            }
-//        });
-
-//        //if My computer
-//        if (node.getLevel() == 1) {
-//            view.findViewById(R.id.btn_delete).setVisibility(View.GONE);
-//        }
-
-        imageLoader.DisplayImage(value.imageURL, ivRootEmployeeImage);
+        imageLoader.DisplayImage(value.userRole.getUser().getImage(), ivRootEmployeeImage);
 
         return view;
     }
@@ -105,16 +96,10 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
     }
 
     public static class EmployeeTreeItem {
-        public int userRoleId;
-        public String name;
-        public String role;
-        public String imageURL;
+        public UserRole userRole;
 
-        public EmployeeTreeItem(int userRoleId, String name, String role, String imageURL) {
-            this.userRoleId= userRoleId;
-            this.name = name;
-            this.role = role;
-            this.imageURL = imageURL;
+        public EmployeeTreeItem(UserRole userRole) {
+            this.userRole = userRole;
         }
     }
 }
