@@ -36,7 +36,7 @@ import java.util.List;
 
 public class EmployeesFragment extends Fragment {
     private View rootView;
-    private List<Employee> employees = new ArrayList<>();
+    private List<UserRole> employees = new ArrayList<>();
     private AndroidTreeView tView;
     private TextView tvRootEmployeeName;
     private TextView tvRootEmployeeType;

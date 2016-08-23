@@ -16,6 +16,8 @@ public class Links {
     public static String GETTASKS = ACTIONS + "getTasks.php";
     public static String ACCEPTTASK = ACTIONS + "acceptTask.php";
     public static String FINISHTASK = ACTIONS + "finishTask.php";
+    public static String GETUSERROLES = ACTIONS + "getUserRoles.php";
+    public static String INSERTTASK = ACTIONS + "insertTask.php";
 
     public static void ipChanged(){
         HOST = "http://" + IP + "/TreeCommunicationProjectWeb/";
@@ -25,5 +27,8 @@ public class Links {
         GETTASKS = ACTIONS + "getTasks.php";
         ACCEPTTASK = ACTIONS + "acceptTask.php";
         FINISHTASK = ACTIONS + "finishTask.php";
+        GETUSERROLES = ACTIONS + "getUserRoles.php";
+        INSERTTASK = ACTIONS + "insertTask.php";
+
     }
 }

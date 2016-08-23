@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.blink.treecommunicationproject.Activities.Adapters.ObjectAdapters.AutoCompleteTVItemAdapter;
 import com.blink.treecommunicationproject.Objects.Employee;
+import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
 
@@ -28,15 +29,15 @@ public class SendBroadcastFragment extends Fragment {
     private View rootView;
     private ImageButton send;
     private MultiAutoCompleteTextView mactvToEmployee;
-    private List<Employee> selectedEmployees;
-    ArrayList<Employee> employees = new ArrayList<Employee>();
+    private List<UserRole> selectedEmployees;
+    ArrayList<UserRole> employees = new ArrayList<UserRole>();
 
     public SendBroadcastFragment() {
         selectedEmployees = null;
     }
 
     @SuppressLint("ValidFragment")
-    public SendBroadcastFragment(List<Employee> selectedEmployees) {
+    public SendBroadcastFragment(List<UserRole> selectedEmployees) {
         this.selectedEmployees = selectedEmployees;
     }
 
@@ -57,8 +58,8 @@ public class SendBroadcastFragment extends Fragment {
 
         if (selectedEmployees != null) {
             String tmp = "";
-            for(Employee e : selectedEmployees){
-                mactvToEmployee.setText(mactvToEmployee.getText() + tmp + e.getFullName());
+            for(UserRole e : selectedEmployees){
+                mactvToEmployee.setText(mactvToEmployee.getText() + tmp + e.getUser().getFullName());
                 tmp = ", ";
             }
         } else {

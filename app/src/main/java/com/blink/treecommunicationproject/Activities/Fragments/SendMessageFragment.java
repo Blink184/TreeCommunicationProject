@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.blink.treecommunicationproject.Activities.Adapters.ObjectAdapters.AutoCompleteTVItemAdapter;
 import com.blink.treecommunicationproject.Objects.Employee;
+import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.R;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class SendMessageFragment extends Fragment {
     private ImageButton send;
     private AutoCompleteTextView actvToEmployee;
     private Employee selectedEmployee;
-    private ArrayList<Employee> toEmployee = new ArrayList<Employee>();
+    private ArrayList<UserRole> toEmployee = new ArrayList<UserRole>();
 
     public SendMessageFragment() {
         // Required empty public constructor
@@ -46,10 +47,10 @@ public class SendMessageFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_send_message, container, false);
 
-        toEmployee.add(new Employee(0, "Susan", "J. Mordigan", "03555666", Employee.EmployeeType.Advisor));
-        toEmployee.add(new Employee(0, "Jack", "Black", "78959565", Employee.EmployeeType.Responsible));
-        toEmployee.add(new Employee(0, "Elie", "Nassar", "70112547", Employee.EmployeeType.Responsible));
-        toEmployee.add(new Employee(0, "John", "Blue", "81235689", Employee.EmployeeType.Director));
+//        toEmployee.add(new Employee(0, "Susan", "J. Mordigan", "03555666", Employee.EmployeeType.Advisor));
+//        toEmployee.add(new Employee(0, "Jack", "Black", "78959565", Employee.EmployeeType.Responsible));
+//        toEmployee.add(new Employee(0, "Elie", "Nassar", "70112547", Employee.EmployeeType.Responsible));
+//        toEmployee.add(new Employee(0, "John", "Blue", "81235689", Employee.EmployeeType.Director));
 
         initialize();
         return rootView;

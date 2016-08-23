@@ -10,6 +10,7 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.blink.treecommunicationproject.Objects.Employee;
+import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.R;
 
 import java.util.ArrayList;
@@ -20,15 +21,15 @@ import java.util.ArrayList;
 public class AutoCompleteTVItemAdapter extends BaseAdapter implements Filterable {
 
     private Context context;
-    private ArrayList<Employee> originalList;
-    private ArrayList<Employee> suggestions = new ArrayList<>();
+    private ArrayList<UserRole> originalList;
+    private ArrayList<UserRole> suggestions = new ArrayList<>();
     private Filter filter = new CustomFilter();
 
     /**
      * @param context      Context
      * @param originalList Original list used to compare in constraints.
      */
-    public AutoCompleteTVItemAdapter(Context context, ArrayList<Employee> originalList) {
+    public AutoCompleteTVItemAdapter(Context context, ArrayList<UserRole> originalList) {
         this.context = context;
         this.originalList = originalList;
     }
@@ -40,7 +41,7 @@ public class AutoCompleteTVItemAdapter extends BaseAdapter implements Filterable
 
     @Override
     public Object getItem(int position) {
-        return suggestions.get(position).getFullName();
+        return suggestions.get(position).getUser().getFullName();
     }
 
 
@@ -70,7 +71,7 @@ public class AutoCompleteTVItemAdapter extends BaseAdapter implements Filterable
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.autoText.setText(suggestions.get(position).getFullName());
+        holder.autoText.setText(suggestions.get(position).getUser().getFullName());
 
         return convertView;
     }
@@ -95,7 +96,7 @@ public class AutoCompleteTVItemAdapter extends BaseAdapter implements Filterable
 
             if (originalList != null && constraint != null) { // Check if the Original List and Constraint aren't null.
                 for (int i = 0; i < originalList.size(); i++) {
-                    if (originalList.get(i).getFullName().toLowerCase().contains(constraint)) { // Compare item in original list if it contains constraints.
+                    if (originalList.get(i).getUser().getFullName().toLowerCase().contains(constraint)) { // Compare item in original list if it contains constraints.
                         suggestions.add(originalList.get(i)); // If TRUE add item in Suggestions.
                     }
                 }

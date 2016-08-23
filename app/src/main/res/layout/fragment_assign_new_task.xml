@@ -92,24 +92,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnAddFile"
-                    android:src="@drawable/ic_attach_file_white_"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"
-                    android:layout_margin="5dp" />
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnAddPhoto"
-                    android:src="@drawable/ic_insert_photo_white_"
-                    android:scaleType="fitXY"
-                    android:adjustViewBounds="true"
-                    android:layout_margin="5dp"/>
+                android:orientation="vertical"
+                android:padding="10dip"
+                >
 
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dip"
+                    android:id="@+id/btnSelectDueDate"
+                    android:background="@color/blueBtnWeb"
+                    android:text="@string/select_due_date"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
