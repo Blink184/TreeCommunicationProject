@@ -32,5 +32,6 @@
     <color name="tabsWeb">#0c111f</color>
     <color name="orangeWeb">#F49A43</color>
     <color name="selectedTabWeb">#364759</color>
+    <color name="web_bg_bg">#f0f3f4</color>
 
 </resources>
