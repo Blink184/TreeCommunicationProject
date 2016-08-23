@@ -77,6 +77,13 @@ public class AssignNewTaskFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_assign_new_task, container, false);
+
+        initialize();
+        return rootView;
+    }
+
+    public void initialize() {
+        actvToEmployee = (AutoCompleteTextView) rootView.findViewById(R.id.actvToEmployee);
         HashMap<String, String> params = new HashMap<>();
         DatabaseMethods.getUserRoles(params, new Connection.OnCallFinish() {
             @Override
@@ -99,6 +106,10 @@ public class AssignNewTaskFragment extends Fragment {
                             toEmployees.add(allUserRoles.get(i));
                         }
                     }
+                    AutoCompleteTVItemAdapter actvAdapter = new AutoCompleteTVItemAdapter(getActivity().getApplicationContext(), toEmployees);
+
+                    actvToEmployee.setAdapter(actvAdapter);
+                    actvToEmployee.setThreshold(1);
                 }
             }
 
@@ -116,18 +127,12 @@ public class AssignNewTaskFragment extends Fragment {
             }
         }).execute();
 
-        initialize();
-        return rootView;
-    }
-
-    public void initialize() {
         send = (ImageButton) rootView.findViewById(R.id.btnSendTask);
         btnSelectDueDate = (Button) rootView.findViewById(R.id.btnSelectDueDate);
         tvDueDate = (TextView) rootView.findViewById(R.id.tvDueDate);
         etTitle = (EditText) rootView.findViewById(R.id.etTitle);
         etDescription = (EditText) rootView.findViewById(R.id.etDescription);
         tvDueDate = (TextView) rootView.findViewById(R.id.tvDueDate);
-        actvToEmployee = (AutoCompleteTextView) rootView.findViewById(R.id.actvToEmployee);
 
         tvDueDate.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
 
@@ -141,11 +146,6 @@ public class AssignNewTaskFragment extends Fragment {
 
             }
         });
-
-        AutoCompleteTVItemAdapter actvAdapter = new AutoCompleteTVItemAdapter(getActivity().getApplicationContext(), toEmployees);
-
-        actvToEmployee.setAdapter(actvAdapter);
-        actvToEmployee.setThreshold(1);
 
         if(selectedEmployee != null){
             actvToEmployee.setText(selectedEmployee.getUser().getFullName());
@@ -201,25 +201,22 @@ public class AssignNewTaskFragment extends Fragment {
     }
 
     private boolean paramsAreCorrect() {
-        boolean res = false;
         if (etTitle.getText().length() < 1) {
             Toast.makeText(getActivity().getApplicationContext(), "Please enter a title.", Toast.LENGTH_LONG).show();
-            return res;
+            return false;
         }
         if (etDescription.getText().length() < 5) {
             Toast.makeText(getActivity().getApplicationContext(), "Please enter a longer description.", Toast.LENGTH_LONG).show();
-            return res;
+            return false;
         }
         if (tvDueDate.getText().length() < 1) {
             Toast.makeText(getActivity().getApplicationContext(), "Please enter a due date.", Toast.LENGTH_LONG).show();
-            return res;
+            return false;
         }
         if (selectedEmployee == null) {
-//            Toast.makeText(getActivity().getApplicationContext(), "Please select to whom the task is for.", Toast.LENGTH_LONG).show();
-            System.out.println("null");
-            return res;
+            Toast.makeText(getActivity().getApplicationContext(), "Please select to whom the task is for.", Toast.LENGTH_LONG).show();
+            return false;
         }
-        //res = true;
-        return res;
+        return true;
     }
 }
