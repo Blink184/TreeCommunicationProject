@@ -88,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                         user.setPassword(etPassword.getText().toString());
                         user.setFirstName(object.getString("FirstName"));
                         user.setLastName(object.getString("LastName"));
+                        user.setImage(Links.PROFILEPICTURESFOLDER + object.getString("Image"));
                         user.setPhone(object.getString("Phone"));
                         user.setAddress(object.getString("Address"));
                         user.setEmail(object.getString("Email"));
