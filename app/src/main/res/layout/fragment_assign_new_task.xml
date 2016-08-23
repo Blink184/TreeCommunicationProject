@@ -9,15 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:background="@color/bg_main">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/add_new_task"
+            android:text="@string/assign_new_task"
             android:textSize="@dimen/task_font_size"
             android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="@color/white"
+            android:layout_margin="10dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -72,12 +73,13 @@
                     android:textColor="@color/black"
                     android:layout_weight="0.2" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.8"
                     android:textColor="@color/black"
-                    android:id="@+id/tvTitle"
+                    android:background="@color/kinda_lessLessWhite"
+                    android:id="@+id/etTitle"
                     android:editable="true" />
             </LinearLayout>
             </LinearLayout>
@@ -116,9 +118,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dip"
-                >
+                android:orientation="horizontal">
 
                 <Button
                     android:layout_width="wrap_content"
@@ -127,7 +127,8 @@
                     android:id="@+id/btnSelectDueDate"
                     android:layout_marginRight="20dp"
                     android:background="@color/blueBtnWeb"
-                    android:text="@string/select_due_date"/>
+                    android:text="@string/select_due_date"
+                    android:layout_marginLeft="10dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -146,8 +147,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_weight="1"
-            android:gravity="right|bottom"
-            android:layout_margin="10dp">
+            android:gravity="right|bottom">
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -155,7 +155,11 @@
                 android:src="@drawable/ic_send_white_"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                android:background="@color/blueBtnWeb"
+                android:paddingLeft="2dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp" />
         </LinearLayout>
     </LinearLayout>
 

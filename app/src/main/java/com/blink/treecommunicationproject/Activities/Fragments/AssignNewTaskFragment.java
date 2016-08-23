@@ -14,10 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,9 +53,9 @@ public class AssignNewTaskFragment extends Fragment {
     private ArrayList<UserRole> allUserRoles = new ArrayList<>();
     private ImageButton send;
     private AutoCompleteTextView actvToEmployee;
-    private TextView tvTitle;
-    private TextView tvDescription;
-    private Employee selectedEmployee;
+    private EditText etTitle;
+    private EditText etDescription;
+    private UserRole selectedEmployee;
     private boolean isDelegated;
     private int mYear;
     private int mMonth;
@@ -64,7 +66,7 @@ public class AssignNewTaskFragment extends Fragment {
     static final int DATE_DIALOG_ID = 0;
 
     @SuppressLint("ValidFragment")
-    public AssignNewTaskFragment(Employee selectedEmployee) {
+    public AssignNewTaskFragment(UserRole selectedEmployee) {
         this.selectedEmployee = selectedEmployee;
     }
     public AssignNewTaskFragment(boolean isDelegated) {
@@ -122,8 +124,8 @@ public class AssignNewTaskFragment extends Fragment {
         send = (ImageButton) rootView.findViewById(R.id.btnSendTask);
         btnSelectDueDate = (Button) rootView.findViewById(R.id.btnSelectDueDate);
         tvDueDate = (TextView) rootView.findViewById(R.id.tvDueDate);
-        tvTitle = (TextView) rootView.findViewById(R.id.tvTitle);
-        tvDescription = (TextView) rootView.findViewById(R.id.tvDescription);
+        etTitle = (EditText) rootView.findViewById(R.id.etTitle);
+        etDescription = (EditText) rootView.findViewById(R.id.etDescription);
         tvDueDate = (TextView) rootView.findViewById(R.id.tvDueDate);
         actvToEmployee = (AutoCompleteTextView) rootView.findViewById(R.id.actvToEmployee);
 
@@ -146,15 +148,29 @@ public class AssignNewTaskFragment extends Fragment {
         actvToEmployee.setThreshold(1);
 
         if(selectedEmployee != null){
-            actvToEmployee.setText(selectedEmployee.getFullName());
+            actvToEmployee.setText(selectedEmployee.getUser().getFullName());
         }
+
+        actvToEmployee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selectedPosition = -1;
+                selectedPosition = toEmployees.indexOf(actvToEmployee.getText().toString());
+                if (selectedPosition > 0) {
+                    selectedEmployee = toEmployees.get(selectedPosition);
+                } else {
+                    selectedEmployee = null;
+                    actvToEmployee.clearComposingText();
+                }
+                //int selectedPos = s1.indexOf((String) ((TextView) arg1).getText());
+            }
+        });
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (paramsAreCorrect()) {
                     addTask();
-                    Toast.makeText(getActivity(), "Your task has been sent", Toast.LENGTH_SHORT).show();
                     Fragment fragment = new TaskFragment();
                     FragmentManager fragmentManager = getActivity().getFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -168,12 +184,14 @@ public class AssignNewTaskFragment extends Fragment {
     }
 
     private void addTask() {
-        DatabaseMethods.insertTask(tvTitle.getText().toString(), tvDescription.getText().toString(), actvToEmployee.getId(), Global.userRole.getId(), tvDueDate.getText().toString(), new Connection.OnCallFinish() {
+        DatabaseMethods.insertTask(etTitle.getText().toString(), etDescription.getText().toString(), selectedEmployee.getId(), Global.userRole.getId(), tvDueDate.getText().toString(), new Connection.OnCallFinish() {
             @Override
             public void processFinish(String output) throws JSONException {
                 JSONObject result = new JSONObject(output);
                 if (result.getString("s").equals("1")) {
-                    JSONArray array = (result.getJSONArray("i"));
+                    Toast.makeText(getActivity(), "Your task has been sent", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "ERR_: "+result.get("i").toString(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -181,22 +199,21 @@ public class AssignNewTaskFragment extends Fragment {
     }
 
     private boolean paramsAreCorrect() {
-        if (tvTitle.getText().length() < 1) {
+        if (etTitle.getText().length() < 1) {
             Toast.makeText(getActivity().getApplicationContext(), "Please enter a title.", Toast.LENGTH_LONG).show();
             return false;
-        }
-        if (tvDescription.getText().length() < 1) {
-            Toast.makeText(getActivity().getApplicationContext(), "Please enter a description.", Toast.LENGTH_LONG).show();
+        } else if (etDescription.getText().length() < 5) {
+            Toast.makeText(getActivity().getApplicationContext(), "Please enter a longer description.", Toast.LENGTH_LONG).show();
             return false;
-        }
-        if (tvDueDate.getText().length() < 1) {
+        } else if (tvDueDate.getText().length() < 1) {
             Toast.makeText(getActivity().getApplicationContext(), "Please enter a due date.", Toast.LENGTH_LONG).show();
             return false;
-        }
-        if (actvToEmployee.getId() < 1) {
+        } else if (selectedEmployee == null) {
             Toast.makeText(getActivity().getApplicationContext(), "Please select to whom the task is for.", Toast.LENGTH_LONG).show();
             return false;
+        } else {
+            return true;
         }
-        return true;
+
     }
 }
