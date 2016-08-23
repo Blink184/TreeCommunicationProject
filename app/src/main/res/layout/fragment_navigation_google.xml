@@ -12,16 +12,27 @@
         android:id="@+id/navigationHeader"
         android:paddingTop="24dp">
 
-        <ImageView
+        <com.joooonho.SelectableRoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:id="@+id/imgAvatar"
+            android:src="@drawable/person"
+            android:scaleType="centerCrop"
+            app:sriv_left_top_corner_radius="16dip"
+            app:sriv_right_top_corner_radius="0dip"
+            app:sriv_left_bottom_corner_radius="48dip"
+            app:sriv_right_bottom_corner_radius="16dip"
+            app:sriv_border_width="1dip"
+            app:sriv_border_color="@color/blueBtnWeb"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            app:sriv_oval="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
+            />
 
         <LinearLayout
             android:orientation="vertical"

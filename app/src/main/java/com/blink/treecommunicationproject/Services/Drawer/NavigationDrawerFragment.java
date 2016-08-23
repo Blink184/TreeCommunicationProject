@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.blink.treecommunicationproject.R;
 import com.blink.treecommunicationproject.Services.Global;
+import com.blink.treecommunicationproject.Services.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,15 +74,18 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         txtUsername.setText(Global.userRole.getUser().getFullName());
         txtPhone.setText(Global.userRole.getUser().getPhone());
 
-        Bitmap src;
-        /*if(Global.profilePicture != null)
-            src = Global.profilePicture;
-        else*/
-            src = BitmapFactory.decodeResource(getResources(), R.drawable.person);
-        RoundedBitmapDrawable dr = RoundedBitmapDrawableFactory.create(getResources(), src);
-        dr.setCornerRadius(Math.max(src.getWidth(), src.getHeight()) / 2.0f);
+        ImageLoader imageLoader = new ImageLoader(view.getContext());
+        imageLoader.DisplayImage(Global.userRole.getUser().getImage(), iv);
 
-        iv.setImageDrawable(dr);
+//        Bitmap src;
+//        /*if(Global.profilePicture != null)
+//            src = Global.profilePicture;
+//        else*/
+//            src = BitmapFactory.decodeResource(getResources(), R.drawable.person);
+//        RoundedBitmapDrawable dr = RoundedBitmapDrawableFactory.create(getResources(), src);
+//        dr.setCornerRadius(Math.max(src.getWidth(), src.getHeight()) / 2.0f);
+//
+//        iv.setImageDrawable(dr);
         return view;
     }
 
