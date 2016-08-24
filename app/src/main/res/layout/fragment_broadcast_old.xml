@@ -33,12 +33,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:orientation="vertical"
+                android:layout_margin="0dp">
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_margin="6dp">
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -47,25 +48,74 @@
                         android:textColor="@color/black"
                         android:layout_weight="0.2" />
 
+                    <Spinner
+                        android:id="@+id/spnToType"
+                        android:layout_weight="0.8"
+                        android:layout_width="0dp"
+                        android:padding="6dp"
+                        android:background="@color/kinda_lessLessWhite"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/llCustom"
+                    android:visibility="gone"
+                    android:orientation="horizontal"
+                    android:layout_margin="6dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Custom"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_weight="0.2" />
+
                     <MultiAutoCompleteTextView
+                        android:padding="6dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.8"
                         android:textColor="@color/black"
+                        android:background="@color/kinda_lessLessWhite"
                         android:id="@+id/mactvToEmployee" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="6dp">
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_weight="0.2" />
 
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:textColor="@color/black"
+                        android:background="@color/kinda_lessLessWhite"
+                        android:padding="6dp"
+                        android:id="@+id/etTitle"
+                        android:editable="true" />
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_margin="10dp">
+                android:layout_margin="6dp">
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/message"
+                    android:layout_marginLeft="0dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
             </LinearLayout>
@@ -74,12 +124,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="6dp">
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:padding="6dp"
                     android:enabled="true"
-                    android:layout_margin="10dp"
+                    android:layout_margin="0dp"
                     android:gravity="top"
                     android:background="@color/kinda_lessLessWhite"
                     android:id="@+id/etDescription"

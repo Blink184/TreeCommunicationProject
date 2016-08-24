@@ -80,6 +80,10 @@ public class LoginActivity extends AppCompatActivity {
             DatabaseMethods.validateUser(params, new Connection.OnCallFinish() {
                 @Override
                 public void processFinish(String output) throws JSONException {
+                    if(output.equals("empty")){
+                        Toast.makeText(getApplicationContext(), "Please check your connection", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     JSONObject result = new JSONObject(output);
                     if (result.getString("s").equals("1")) {
                         JSONObject object = (result.getJSONObject("i"));

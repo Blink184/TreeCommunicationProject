@@ -20,6 +20,7 @@ public class Links {
     public static String GETUSERROLES = ACTIONS + "getUserRoles.php";
     public static String INSERTTASK = ACTIONS + "insertTask.php";
     public static String GETBROADCASTS = ACTIONS + "getBroadcasts.php";
+    public static String INSERTBROADCAST = ACTIONS + "insertBroadcast.php";
 
     public static void ipChanged(){
         HOST = "http://" + IP + "/TreeCommunicationProjectWeb/";
@@ -33,5 +34,6 @@ public class Links {
         GETUSERROLES = ACTIONS + "getUserRoles.php";
         INSERTTASK = ACTIONS + "insertTask.php";
         GETBROADCASTS = ACTIONS + "getBroadcasts.php";
+        INSERTBROADCAST = ACTIONS + "insertBroadcast.php";
     }
 }

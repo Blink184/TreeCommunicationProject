@@ -16,6 +16,7 @@ import com.blink.treecommunicationproject.Objects.Role;
 import com.blink.treecommunicationproject.Objects.User;
 import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.R;
+import com.blink.treecommunicationproject.Services.Drawer.NavigationDrawerFragment;
 import com.blink.treecommunicationproject.Services.Global;
 import com.blink.treecommunicationproject.Web.Connection;
 import com.blink.treecommunicationproject.Web.DatabaseMethods;
@@ -39,12 +40,7 @@ import java.util.List;
 
 public class EmployeesFragment extends Fragment {
     private View rootView;
-    private List<UserRole> employees = new ArrayList<>();
     private AndroidTreeView tView;
-//    private TextView tvRootEmployeeName;
-//    private TextView tvRootEmployeeType;
-//    private ImageButton ibBroadcast;
-//    private SelectableRoundedImageView ivRootEmployeeImage;
 
     public EmployeesFragment(){}
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,32 +50,6 @@ public class EmployeesFragment extends Fragment {
     }
 
     private void initialize() {
-
-//        ivRootEmployeeImage = (SelectableRoundedImageView) rootView.findViewById(R.id.ivRootEmployeeImage);
-//        ivRootEmployeeImage.setOnLongClickListener(new View.OnLongClickListener() {
-//            @Override
-//            public boolean onLongClick(View v) {
-//                getFragmentManager().beginTransaction()
-//                        .replace(R.id.container, new EmployeesOldFragment())
-//                        .commit();
-//                return false;
-//            }
-//        });
-//
-//        tvRootEmployeeName = (TextView) rootView.findViewById(R.id.tvRootEmployeeName);
-//        tvRootEmployeeType = (TextView) rootView.findViewById(R.id.tvRootEmployeeType);
-//        ibBroadcast = (ImageButton) rootView.findViewById(R.id.ibBroadcast);
-//        ibBroadcast.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                getFragmentManager().beginTransaction()
-//                        .replace(R.id.container, new SendBroadcastFragment(employees))
-//                        .commit();
-//            }
-//        });
-//
-//        tvRootEmployeeName.setText(Global.userRole.getUser().getFullName());
-//        tvRootEmployeeType.setText(Global.userRole.getRole().getDesription().toString());
 
         DatabaseMethods.getTree(Global.userRole.getId(), new Connection.OnCallFinish() {
             @Override
@@ -99,11 +69,9 @@ public class EmployeesFragment extends Fragment {
                     tView.setDefaultViewHolder(EmployeeItem.class);
                     tView.setUse2dScroll(false);
 
-                    //tView.setDefaultNodeClickListener(nodeClickListener);
-                    //tView.setDefaultNodeLongClickListener(nodeLongClickListener);
+
                     container.addView(tView.getView());
                     tView.expandAll();
-                    //tView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 }
             }
 
