@@ -25,6 +25,9 @@ public class AutoCompleteTVItemAdapter extends BaseAdapter implements Filterable
     private ArrayList<UserRole> suggestions = new ArrayList<>();
     private Filter filter = new CustomFilter();
 
+    public ArrayList<UserRole> getSuggestions(){
+        return suggestions;
+    }
     /**
      * @param context      Context
      * @param originalList Original list used to compare in constraints.
