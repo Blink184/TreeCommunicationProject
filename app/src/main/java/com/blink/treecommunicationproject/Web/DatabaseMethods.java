@@ -18,6 +18,7 @@ public class DatabaseMethods {
     public static Connection.ConnectionTask validateUser(HashMap<String, String> postDataParams, Connection.OnCallFinish finished) {
         return new Connection().performPostCall(VALIDATEUSER, postDataParams, finished);
     }
+
     public static Connection.ConnectionTask getTree(int userRoleId, Connection.OnCallFinish finished) {
         HashMap<String, String> postDataParams = new HashMap<>();
         postDataParams.put("parentid", String.valueOf(userRoleId));
@@ -29,6 +30,13 @@ public class DatabaseMethods {
         postDataParams.put("userroleid", String.valueOf(userRoleId));
         postDataParams.put("limit", String.valueOf(limit));
         return new Connection().performPostCall(GETTASKS, postDataParams, finished);
+    }
+
+    public static Connection.ConnectionTask getBroadcasts(int userRoleId, int limit, Connection.OnCallFinish finished) {
+        HashMap<String, String> postDataParams = new HashMap<>();
+        postDataParams.put("userroleid", String.valueOf(userRoleId));
+        postDataParams.put("limit", String.valueOf(limit));
+        return new Connection().performPostCall(GETBROADCASTS, postDataParams, finished);
     }
 
     public static Connection.ConnectionTask insertTask(String title, String content, int empnameto, int empnamefrom, String duedate,Connection.OnCallFinish finished) {
