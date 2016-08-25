@@ -17,6 +17,7 @@ import com.blink.treecommunicationproject.Activities.Adapters.ObjectAdapters.Aut
 import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.Objects.UserRole;
 import com.blink.treecommunicationproject.R;
+import com.blink.treecommunicationproject.Services.Global;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,7 @@ public class SendMessageFragment extends Fragment {
     @SuppressLint("ValidFragment")
     public SendMessageFragment(UserRole selectedEmployee) {
         this.selectedEmployee = selectedEmployee;
+        Global.isNotEmpFrag = true;
     }
 
 
