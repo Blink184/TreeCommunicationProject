@@ -5,25 +5,37 @@ package com.blink.treecommunicationproject.Objects;
  */
 public class BroadcastLine {
     private int id;
-    private int broadcastId;
     private int toUserRoleId;
+    private UserRole toUserRole;
     private String dateReceived;
+    private boolean isSender;
     private boolean isReceived;
+
+    public BroadcastLine() {
+    }
 
     public int getId() {
         return id;
     }
 
+    public boolean isSender() {
+        return isSender;
+    }
+
+    public void setSender(boolean sender) {
+        isSender = sender;
+    }
+
+    public UserRole getToUserRole() {
+        return toUserRole;
+    }
+
+    public void setToUserRole(UserRole toUserRole) {
+        this.toUserRole = toUserRole;
+    }
+
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getBroadcastId() {
-        return broadcastId;
-    }
-
-    public void setBroadcastId(int broadcastId) {
-        this.broadcastId = broadcastId;
     }
 
     public int getToUserRoleId() {

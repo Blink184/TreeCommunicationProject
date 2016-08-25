@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.blink.treecommunicationproject.Activities.Fragments.AssignNewTaskFragment;
 import com.blink.treecommunicationproject.Activities.Fragments.SendMessageFragment;
 import com.blink.treecommunicationproject.Objects.Employee;
 import com.blink.treecommunicationproject.Objects.UserRole;
@@ -62,11 +63,11 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
                         .commit();
             }
         });
-        ibSendMessage.setOnClickListener(new View.OnClickListener() {
+        ibAssignTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((Activity)context).getFragmentManager().beginTransaction()
-                        .replace(R.id.container, new SendMessageFragment(value.userRole))
+                        .replace(R.id.container, new AssignNewTaskFragment(value.userRole))
                         .commit();
             }
         });
