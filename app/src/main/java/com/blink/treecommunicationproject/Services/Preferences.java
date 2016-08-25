@@ -10,6 +10,7 @@ public class Preferences {
 
     public static String USER = "USER";
     public static String ISLOGGEDIN = "ISLOGGEDIN";
+    public static String LASTIP = "LASTIP";
 
     public static String NOTIFICATIONENABLED = "NOTIFICATIONENABLED";
     public static String NOTIFICATIONTIMEINTERVAL  = "NOTIFICATIONTIMEINTERVAL";

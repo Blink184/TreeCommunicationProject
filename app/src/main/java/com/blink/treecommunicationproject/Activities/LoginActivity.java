@@ -68,11 +68,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         preferences = new Preferences(getApplicationContext());
+        etIP.setText(preferences.getString(Preferences.LASTIP));
       //  ProgressBar.set(findViewById(R.id.circle_loading_view));
     }
 
     private void login() {
         Links.IP = etIP.getText().toString();
+        preferences.putString(Preferences.LASTIP, Links.IP);
         Links.ipChanged();
             HashMap<String, String> params = new HashMap<>();
             params.put("username", etUsername.getText().toString());
