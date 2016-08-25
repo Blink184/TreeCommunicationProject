@@ -1,7 +1,7 @@
-/*
 package com.blink.treecommunicationproject.Activities.Adapters;
 
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +12,13 @@ import com.blink.treecommunicationproject.Objects.Broadcast;
 import com.blink.treecommunicationproject.Objects.Task;
 import com.blink.treecommunicationproject.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
-*/
-/**
- * Created by Kirby on 8/23/2016.
- *//*
+/*Created by Kirby on 8/23/2016.*/
+
 
 public class BroadcastFragmentItemListAdapter extends BaseAdapter {
     private Context mContext;
@@ -54,19 +55,28 @@ public class BroadcastFragmentItemListAdapter extends BaseAdapter {
 
             list = inflater.inflate(R.layout.fragment_broadcast_list_item, parent, false);
 
-            Task task = tasks.get(position);
+            Broadcast broadcast = broadcasts.get(position);
 
-            TextView to = (TextView) list.findViewById(R.id.tvTo);
+            TextView from = (TextView) list.findViewById(R.id.tvFrom);
+            TextView role = (TextView) list.findViewById(R.id.tvFromRole);
+            TextView timeAgo = (TextView) list.findViewById(R.id.tvTimeAgo);
             TextView title = (TextView) list.findViewById(R.id.tvTitle);
-            TextView description = (TextView) list.findViewById(R.id.tvDescription);
-            TextView startDate = (TextView) list.findViewById(R.id.tvStartDate);
-            TextView dueDate = (TextView) list.findViewById(R.id.tvDueDate);
+            TextView desc = (TextView) list.findViewById(R.id.tvDescription);
 
-            to.setText(tasks.get(position).getToUserRole());
-            title.setText(tasks.get(position).getTitle());
-            description.setText(tasks.get(position).getContent().toString());
-            startDate.setText(tasks.get(position).getStartDate().toString());
-            dueDate.setText(tasks.get(position).getDueDate().toString());
+            long timeInMillis = getDateInMillis(broadcast.getDateSent());
+            String _timeAgo =  (DateUtils.getRelativeTimeSpanString(timeInMillis, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS)).toString();
+
+            if (broadcast.getBroadcastLine().isSender()) {
+                from.setText(broadcast.getFromUserRole().getUser().getFullName());
+                role.setText(broadcast.getFromUserRole().getRole().getDesription());
+            } else {
+                from.setText(broadcast.getBroadcastLine().getToUserRole().getUser().getFullName());
+                role.setText(broadcast.getBroadcastLine().getToUserRole().getRole().getDesription());
+            }
+            timeAgo.setText(_timeAgo);
+            title.setText(broadcast.getTitle());
+            desc.setText(broadcast.getContent());
+
         } else {
             list = (View) convertView;
         }
@@ -75,5 +85,20 @@ public class BroadcastFragmentItemListAdapter extends BaseAdapter {
     }
 
 
+    private long getDateInMillis(String srcDate) {
+        SimpleDateFormat desiredFormat = new SimpleDateFormat(
+                "yyyy-MM-dd hh:mm:ss");
+
+        long dateInMillis = 0;
+        try {
+            Date date = desiredFormat.parse(srcDate);
+            dateInMillis = date.getTime();
+            return dateInMillis;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
 }
-*/

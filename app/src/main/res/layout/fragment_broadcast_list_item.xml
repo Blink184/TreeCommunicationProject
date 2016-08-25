@@ -33,7 +33,7 @@
                         android:textStyle="bold"
                         android:padding="5dp"
                         android:text="Aynur Ajami"
-                        android:id="@+id/tvTo"
+                        android:id="@+id/tvFrom"
                         android:textSize="16dip"
                         android:layout_weight="3" />
                     <TextView
@@ -42,7 +42,7 @@
                         android:textColor="@color/black"
                         android:padding="5dp"
                         android:text="Supervisor"
-                        android:id="@+id/tvToRole"
+                        android:id="@+id/tvFromRole"
                         android:layout_weight="3" />
 
                 </LinearLayout>

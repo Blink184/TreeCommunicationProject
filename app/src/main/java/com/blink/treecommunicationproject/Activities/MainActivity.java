@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 //import com.blink.treecommunicationproject.Activities.Fragments.EmployeesFragment;
+import com.blink.treecommunicationproject.Activities.Fragments.BroadcastFragment;
 import com.blink.treecommunicationproject.Activities.Fragments.EmployeesFragment;
 import com.blink.treecommunicationproject.Activities.Fragments.SendBroadcastFragment;
 import com.blink.treecommunicationproject.Activities.Fragments.SendMessageFragment;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
                     fragment = new EmployeesFragment();
                     break;
                 case 1:
-                    fragment = new SendBroadcastFragment();
+                    fragment = new BroadcastFragment();
                     break;
                 case 2:
                     fragment = new SendMessageFragment();
