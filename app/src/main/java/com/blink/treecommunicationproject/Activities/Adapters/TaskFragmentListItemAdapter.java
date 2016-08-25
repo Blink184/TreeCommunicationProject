@@ -81,9 +81,6 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
             final CheckBox cbProgress = (CheckBox) list.findViewById(R.id.cbProgress);
             cbProgress.setChecked(false);
 
-            if (task.getFromUserRoleId() == Global.userRole.getId() && task.getToUserRoleId() != Global.userRole.getId()) {
-                cbProgress.setEnabled(false);
-            }
 
             if (task.getTaskState() == 1) {
                 cbProgress.setText("Accept");
@@ -93,6 +90,17 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
                 cbProgress.setText("Finished");
                 cbProgress.setChecked(true);
                 cbProgress.setEnabled(false);
+            }
+
+            if (task.getFromUserRoleId() == Global.userRole.getId() && task.getToUserRoleId() != Global.userRole.getId()) {
+                cbProgress.setEnabled(false);
+                if (task.getTaskState() == 1) {
+                    cbProgress.setText("New");
+                } else if (task.getTaskState() == 2) {
+                    cbProgress.setText("In Progress");
+                } else {
+                    cbProgress.setText("Finished");
+                }
             }
 
             cbProgress.setOnClickListener(new View.OnClickListener() {

@@ -54,23 +54,31 @@
                 android:id="@+id/tvType"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="40dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_marginRight="10dp"
             android:layout_weight="1">
-            <ImageButton
-                android:layout_width="20dp"
+            <Button
+                android:layout_width="40dp"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:background="#00000000"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="0dp"
+                android:paddingTop="16dp"
+                style="?android:attr/borderlessButtonStyle"
                 android:id="@+id/ibAssignTask"
-                android:src="@drawable/add_task"/>
-            <ImageButton
-                android:layout_width="20dp"
+                android:drawableTop="@drawable/add_task"/>
+            <Button
+                android:layout_width="40dp"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
+                style="?android:attr/borderlessButtonStyle"
                 android:background="#00000000"
                 android:id="@+id/ibSendMessage"
-                android:src="@drawable/icon_send_message"/>
+                android:paddingTop="20dp"
+                android:drawableTop="@drawable/icon_send_message"/>
         </LinearLayout>
     </LinearLayout>
 

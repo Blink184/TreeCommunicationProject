@@ -8,6 +8,7 @@ import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -29,8 +30,8 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
     private TextView tvName;
     private TextView tvType;
     private TextView tvArrow;
-    private ImageButton ibSendMessage;
-    private ImageButton ibAssignTask;
+    private Button ibSendMessage;
+    private Button ibAssignTask;
     private ImageLoader imageLoader;
     private SelectableRoundedImageView ivRootEmployeeImage;
 
@@ -48,8 +49,8 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
         tvName = (TextView) view.findViewById(R.id.tvName);
         tvType = (TextView) view.findViewById(R.id.tvType);
         tvArrow = (TextView) view.findViewById(R.id.tvArrow);
-        ibSendMessage = (ImageButton) view.findViewById(R.id.ibSendMessage);
-        ibAssignTask = (ImageButton) view.findViewById(R.id.ibAssignTask);
+        ibSendMessage = (Button) view.findViewById(R.id.ibSendMessage);
+        ibAssignTask = (Button) view.findViewById(R.id.ibAssignTask);
         ivRootEmployeeImage = (SelectableRoundedImageView) view.findViewById(R.id.ivRootEmployeeImage);
 
         tvName.setText(value.userRole.getUser().getFullName());
