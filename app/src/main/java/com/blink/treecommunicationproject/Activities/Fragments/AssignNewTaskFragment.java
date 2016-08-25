@@ -110,6 +110,14 @@ public class AssignNewTaskFragment extends Fragment {
 
                     actvToEmployee.setAdapter(actvAdapter);
                     actvToEmployee.setThreshold(1);
+
+                    actvToEmployee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            UserRole ur = ((AutoCompleteTVItemAdapter)parent.getAdapter()).getSuggestions().get(position);
+                            selectedEmployee = ur;
+                        }
+                    });
                 }
             }
 
@@ -151,20 +159,20 @@ public class AssignNewTaskFragment extends Fragment {
             actvToEmployee.setText(selectedEmployee.getUser().getFullName());
         }
 
-        actvToEmployee.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int selectedPosition = -1;
-                selectedPosition = toEmployees.indexOf(actvToEmployee.getText().toString());
-                if (selectedPosition > 0) {
-                    selectedEmployee = toEmployees.get(selectedPosition);
-                } else {
-                    selectedEmployee = null;
-                    actvToEmployee.clearComposingText();
-                }
-                //int selectedPos = s1.indexOf((String) ((TextView) arg1).getText());
-            }
-        });
+//        actvToEmployee.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int selectedPosition = -1;
+//                selectedPosition = toEmployees.indexOf(actvToEmployee.getText().toString());
+//                if (selectedPosition > 0) {
+//                    selectedEmployee = toEmployees.get(selectedPosition);
+//                } else {
+//                    selectedEmployee = null;
+//                    actvToEmployee.clearComposingText();
+//                }
+//                //int selectedPos = s1.indexOf((String) ((TextView) arg1).getText());
+//            }
+//        });
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
