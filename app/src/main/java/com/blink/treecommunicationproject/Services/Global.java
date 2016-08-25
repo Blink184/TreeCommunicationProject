@@ -7,4 +7,6 @@ import com.blink.treecommunicationproject.Objects.UserRole;
  */
 public class Global {
     public static UserRole userRole;
+
+    public static boolean isNotEmpFrag = false;
 }

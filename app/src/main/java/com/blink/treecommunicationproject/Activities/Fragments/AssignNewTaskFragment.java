@@ -77,7 +77,7 @@ public class AssignNewTaskFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_assign_new_task, container, false);
-
+        Global.isNotEmpFrag = true;
         initialize();
         return rootView;
     }
@@ -178,6 +178,7 @@ public class AssignNewTaskFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (paramsAreCorrect()) {
+                    Global.isNotEmpFrag = false;
                     addTask();
                     Fragment fragment = new TaskFragment();
                     FragmentManager fragmentManager = getActivity().getFragmentManager();
