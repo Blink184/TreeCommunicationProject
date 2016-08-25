@@ -64,7 +64,7 @@ public class TaskFragment extends Fragment {
         tasks.clear();
         if (type == 1) {
             for (Task task : allTasks) {
-                if (task.getToUserRoleId() == Global.userRole.getId()) {
+                if (task.getToUserRoleId() == Global.userRole.getId() && task.getFromUserRoleId() == Global.userRole.getId()) {
                     tasks.add(task);
                 }
             }

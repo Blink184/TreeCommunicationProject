@@ -80,6 +80,7 @@ public class TaskFragmentListItemAdapter extends BaseAdapter{
 
             final CheckBox cbProgress = (CheckBox) list.findViewById(R.id.cbProgress);
             cbProgress.setChecked(false);
+
             if (task.getFromUserRoleId() == Global.userRole.getId() && task.getToUserRoleId() != Global.userRole.getId()) {
                 cbProgress.setEnabled(false);
             }
