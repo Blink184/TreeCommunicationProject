@@ -79,9 +79,9 @@ public class EmployeeItem extends TreeNode.BaseNodeViewHolder<EmployeeItem.Emplo
         int leftPadding = 0;
         switch (node.getLevel()){
             case 1: break;
-            case 2: leftPadding = 120; break;
-            case 3: leftPadding = 240; break;
-            case 4: leftPadding = 480; break;
+            case 2: leftPadding = 30; break;
+            case 3: leftPadding = 60; break;
+            case 4: leftPadding = 90; break;
         }
         LinearLayout ll = (LinearLayout) view.findViewById(R.id.ll);
         ll.setPadding(leftPadding,5,5,5);
