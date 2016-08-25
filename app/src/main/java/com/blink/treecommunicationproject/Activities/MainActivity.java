@@ -18,6 +18,7 @@ import com.blink.treecommunicationproject.Activities.Fragments.TaskFragment;
 import com.blink.treecommunicationproject.Services.Drawer.NavigationDrawerCallbacks;
 import com.blink.treecommunicationproject.Services.Drawer.NavigationDrawerFragment;
 import com.blink.treecommunicationproject.R;
+import com.blink.treecommunicationproject.Services.Global;
 
 public class MainActivity extends AppCompatActivity implements NavigationDrawerCallbacks {
 
@@ -83,10 +84,11 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerC
 
     @Override
     public void onBackPressed() {
-        if(mNavigationDrawerFragment.getCurrentSelectedPosition() == 0){
+        if(mNavigationDrawerFragment.getCurrentSelectedPosition() == 0 && Global.isNotEmpFrag == false){
             super.onBackPressed();
         }else{
             mNavigationDrawerFragment.selectItem(0);
+            Global.isNotEmpFrag = false;
         }
     }
 }

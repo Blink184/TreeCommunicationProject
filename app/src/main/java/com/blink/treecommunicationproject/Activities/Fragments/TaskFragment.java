@@ -189,7 +189,6 @@ public class TaskFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
     }
 
 }
